@@ -4,14 +4,6 @@ import './PostCreator.css';
 const PostCreator = () => {
   const [postText, setPostText] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (postText.trim()) {
-      // Here you would typically send the post to your backend
-      console.log('New post:', postText);
-      setPostText('');
-    }
-  };
 
   return (
     <div className="post-creator">
