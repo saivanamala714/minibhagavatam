@@ -1,0 +1,26 @@
+.main-feed {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px 0;
+  min-height: calc(100vh - 56px);
+}
+
+.posts-container {
+  margin-top: 16px;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .main-feed {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-feed {
+    width: 100%;
+    padding: 20px 8px;
+  }
+}

@@ -1,0 +1,124 @@
+.left-sidebar {
+  width: 280px;
+  height: calc(100vh - 56px);
+  background-color: #ffffff;
+  padding: 16px 0;
+  overflow-y: auto;
+  position: fixed;
+  left: 0;
+  top: 56px;
+  border-right: 1px solid #e4e6ea;
+}
+
+.sidebar-menu {
+  padding: 0 8px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-bottom: 4px;
+}
+
+.menu-item:hover {
+  background-color: #f0f2f5;
+}
+
+.profile-item {
+  font-weight: 600;
+}
+
+.menu-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e4e6ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.profile-item .menu-icon {
+  background-color: #1877f2;
+  color: white;
+}
+
+.menu-text {
+  font-size: 15px;
+  color: #050505;
+  font-weight: 500;
+}
+
+.sidebar-divider {
+  border: none;
+  height: 1px;
+  background-color: #e4e6ea;
+  margin: 16px 16px;
+}
+
+.shortcuts-section {
+  padding: 0 16px;
+}
+
+.shortcuts-header {
+  color: #65676b;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.shortcut-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  margin-bottom: 4px;
+}
+
+.shortcut-item:hover {
+  background-color: #f0f2f5;
+}
+
+.shortcut-image {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: #e4e6ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.shortcut-name {
+  font-size: 15px;
+  color: #050505;
+  font-weight: 500;
+}
+
+/* Scrollbar styling */
+.left-sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.left-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.left-sidebar::-webkit-scrollbar-thumb {
+  background-color: #bcc0c4;
+  border-radius: 4px;
+}
+
+.left-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #8a8d91;
+}
