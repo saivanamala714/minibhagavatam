@@ -3,18 +3,18 @@ import './LeftSidebar.css';
 
 const LeftSidebar = () => {
   const menuItems = [
-    { icon: '👤', text: '1', isProfile: true },
-    { icon: '👥', text: '2' },
-    { icon: '👥', text: '3' },
-    { icon: '🏪', text: '4' },
-    { icon: '📺', text: '5' },
-    { icon: '📅', text: '6' },
-    { icon: '📄', text: '7' },
-    { icon: '💾', text: '8' },
-    { icon: '🎮', text: '9' },
-    { icon: '📰', text: '10' },
-    { icon: '🏃', text: '11' },
-    { icon: '🎵', text: '12' }
+    { icon: '👤', text: 'Canto 1', isProfile: true },
+    { icon: '👥', text: 'Canto 2' },
+    { icon: '👥', text: 'Canto 3' },
+    { icon: '🏪', text: 'Canto 4' },
+    { icon: '📺', text: 'Canto 5' },
+    { icon: '📅', text: 'Canto 6' },
+    { icon: '📄', text: 'Canto 7' },
+    { icon: '💾', text: 'Canto 8' },
+    { icon: '🎮', text: 'Canto 9' },
+    { icon: '📰', text: 'Canto 10' },
+    { icon: '🏃', text: 'Canto 11' },
+    { icon: '🎵', text: 'Canto 12' }
   ];
 
   const shortcuts = [

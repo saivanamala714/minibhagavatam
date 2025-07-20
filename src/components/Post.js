@@ -33,7 +33,11 @@ const Post = ({ post }) => {
         <p>{post.content}</p>
         {post.image && (
           <div className="post-image">
-            <div className="image-placeholder">{post.image}</div>
+            {post.image.startsWith('/images/') ? (
+              <img src={post.image} alt="Canto illustration" className="actual-image" />
+            ) : (
+              <div className="image-placeholder">{post.image}</div>
+            )}
           </div>
         )}
       </div>

@@ -89,6 +89,15 @@
   font-size: 48px;
 }
 
+.actual-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+
 .post-stats {
   display: flex;
   justify-content: space-between;
