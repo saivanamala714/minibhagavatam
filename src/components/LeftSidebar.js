@@ -18,11 +18,11 @@ const LeftSidebar = () => {
   ];
 
   const shortcuts = [
-    { name: 'React Developers', image: '⚛️' },
-    { name: 'JavaScript Community', image: '🟨' },
-    { name: 'Web Development', image: '🌐' },
-    { name: 'UI/UX Design', image: '🎨' },
-    { name: 'Tech News', image: '📱' }
+    {
+      name: 'shrimadbhagavatam read online',
+      image: '⚛️',
+      link: 'https://sanskritdocuments.org/itrans/shrimadbhagavatam'
+    }
   ];
 
   return (
@@ -50,13 +50,19 @@ const LeftSidebar = () => {
 
       <div className="shortcuts-section">
         <div className="shortcuts-header">
-          <span>Your Shortcuts</span>
+          <span>Useful Links</span>
         </div>
         {shortcuts.map((shortcut, index) => (
-          <div key={index} className="shortcut-item">
+          <a
+            key={index}
+            href={shortcut.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shortcut-item"
+          >
             <div className="shortcut-image">{shortcut.image}</div>
             <span className="shortcut-name">{shortcut.name}</span>
-          </div>
+          </a>
         ))}
       </div>
     </div>

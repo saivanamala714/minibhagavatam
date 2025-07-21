@@ -89,10 +89,14 @@
   border-radius: 8px;
   transition: background-color 0.2s;
   margin-bottom: 4px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .shortcut-item:hover {
   background-color: #f0f2f5;
+  text-decoration: none;
+  color: inherit;
 }
 
 .shortcut-image {

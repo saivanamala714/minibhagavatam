@@ -12,7 +12,6 @@ function App() {
       <div className="app-body">
         <LeftSidebar />
         <MainFeed />
-        <RightSidebar />
       </div>
     </div>
   );

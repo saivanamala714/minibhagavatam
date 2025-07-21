@@ -6,10 +6,10 @@ const Header = () => {
     <div className="header">
       <div className="header-left">
         <div className="logo">
-          <span className="logo-text">facebook</span>
+          <span className="logo-text">Bhakti-vriksha</span>
         </div>
         <div className="search-bar">
-          <input type="text" placeholder="Search Facebook" />
+          <input type="text" placeholder="Search Cantos" />
           <div className="search-icon">🔍</div>
         </div>
       </div>
@@ -25,10 +25,6 @@ const Header = () => {
       </div>
       
       <div className="header-right">
-        <div className="header-option">
-          <div className="profile-pic">👤</div>
-          <span>John Doe</span>
-        </div>
         <div className="header-option">
           <div className="icon">➕</div>
         </div>

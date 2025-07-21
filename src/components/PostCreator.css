@@ -6,6 +6,11 @@
   margin-bottom: 16px;
 }
 
+.quote-of-day {
+  background: linear-gradient(135deg, #fff8e1 0%, #f3e5f5 100%);
+  border: 1px solid #e8d5b7;
+}
+
 .post-creator-top {
   display: flex;
   align-items: center;
@@ -77,18 +82,129 @@
   color: #65676b;
 }
 
+/* Quote of the Day Styles */
+.quote-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.quote-icon {
+  font-size: 24px;
+}
+
+.quote-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #4a4a4a;
+}
+
+.quote-content {
+  margin-bottom: 20px;
+}
+
+.sanskrit-quote {
+  font-size: 16px;
+  font-style: italic;
+  color: #8b4513;
+  margin-bottom: 16px;
+  line-height: 1.6;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  border-left: 4px solid #ff9800;
+}
+
+.quote-translation {
+  font-size: 15px;
+  color: #2c2c2c;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  text-align: justify;
+}
+
+.quote-reference {
+  font-size: 14px;
+  color: #666;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: right;
+}
+
+.quote-author {
+  font-size: 13px;
+  color: #888;
+  font-style: italic;
+  text-align: right;
+}
+
+.quote-actions {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #e8d5b7;
+  padding-top: 16px;
+}
+
+.quote-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  flex: 1;
+  justify-content: center;
+}
+
+.quote-action:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.action-icon {
+  font-size: 18px;
+}
+
+.action-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5d4037;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .post-creator-bottom {
     flex-direction: column;
     gap: 8px;
   }
-  
+
   .post-option {
     justify-content: flex-start;
   }
-  
+
   .option-text {
+    font-size: 14px;
+  }
+
+  .quote-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quote-action {
+    justify-content: flex-start;
+  }
+
+  .sanskrit-quote {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .quote-translation {
     font-size: 14px;
   }
 }
