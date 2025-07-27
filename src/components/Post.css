@@ -98,102 +98,11 @@
   display: block;
 }
 
-.post-stats {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
 
-.post-likes {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.like-icon {
-  font-size: 16px;
-}
-
-.like-count {
-  font-size: 15px;
-  color: #65676b;
-}
-
-.post-engagement {
-  display: flex;
-  gap: 16px;
-}
-
-.post-engagement span {
-  font-size: 15px;
-  color: #65676b;
-  cursor: pointer;
-}
-
-.post-engagement span:hover {
-  text-decoration: underline;
-}
-
-.post-divider {
-  border: none;
-  height: 1px;
-  background-color: #e4e6ea;
-  margin: 12px 0;
-}
-
-.post-actions {
-  display: flex;
-  justify-content: space-around;
-}
-
-.post-action {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  flex: 1;
-  justify-content: center;
-}
-
-.post-action:hover {
-  background-color: #f0f2f5;
-}
-
-.post-action.liked {
-  color: #1877f2;
-}
-
-.post-action.liked .action-text {
-  color: #1877f2;
-  font-weight: 600;
-}
-
-.action-icon {
-  font-size: 18px;
-}
-
-.action-text {
-  font-size: 15px;
-  font-weight: 600;
-  color: #65676b;
-}
 
 /* Responsive design */
 @media (max-width: 768px) {
   .post {
     padding: 12px;
-  }
-  
-  .post-actions {
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .post-action {
-    justify-content: flex-start;
   }
 }
