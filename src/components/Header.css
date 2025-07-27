@@ -3,9 +3,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e4e6ea;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(30, 60, 114, 0.2);
+  box-shadow: 0 2px 12px rgba(30, 60, 114, 0.15);
   position: fixed;
   top: 0;
   left: 0;
@@ -27,8 +28,12 @@
 .logo-text {
   font-size: 24px;
   font-weight: bold;
-  color: #1877f2;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4a90e2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-family: 'Helvetica', sans-serif;
+  text-shadow: 0 2px 4px rgba(30, 60, 114, 0.1);
 }
 
 .search-bar {

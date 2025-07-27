@@ -16,7 +16,7 @@ const BackgroundMusic = () => {
     },
     {
       name: "Om Namo Bhagavate",
-      src: "/music/om-namo-bhagavate.mp3" // Add this file to public/music/
+      src: "/music/hare-krishna-mantra.mp3" // Add this file to public/music/
     }
   ];
 

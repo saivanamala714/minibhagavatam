@@ -1,13 +1,15 @@
 .right-sidebar {
   width: 280px;
   height: calc(100vh - 56px);
-  background-color: #ffffff;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 248, 255, 0.85) 100%);
+  backdrop-filter: blur(10px);
   padding: 16px;
   overflow-y: auto;
   position: fixed;
   right: 0;
   top: 56px;
-  border-left: 1px solid #e4e6ea;
+  border-left: 1px solid rgba(30, 60, 114, 0.2);
+  box-shadow: -2px 0 8px rgba(30, 60, 114, 0.1);
 }
 
 .section-title {

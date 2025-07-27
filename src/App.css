@@ -1,6 +1,58 @@
 .App {
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg,
+    #1e3c72 0%,     /* Deep blue like Krishna's complexion */
+    #2a5298 25%,    /* Royal blue */
+    #4a90e2 50%,    /* Sky blue */
+    #87ceeb 75%,    /* Light blue */
+    #e6f3ff 100%    /* Very light blue */
+  );
+  background-attachment: fixed;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Krishna and Peacock themed background elements */
+.App::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 191, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(138, 43, 226, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Peacock feather pattern overlay */
+.App::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 100px,
+      rgba(0, 191, 255, 0.02) 100px,
+      rgba(0, 191, 255, 0.02) 102px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 100px,
+      rgba(255, 215, 0, 0.02) 100px,
+      rgba(255, 215, 0, 0.02) 102px
+    );
+  pointer-events: none;
+  z-index: -1;
 }
 
 .app-body {
@@ -12,18 +64,18 @@
 /* Responsive design */
 @media (max-width: 1200px) {
   .app-body {
-    justify-content: center;
-  }
-
-  /* Hide sidebars on smaller screens */
-  .left-sidebar,
-  .right-sidebar {
-    display: none;
+    justify-content: flex-start;
   }
 }
 
 @media (max-width: 768px) {
   .app-body {
+    justify-content: center;
     padding-top: 56px;
+  }
+
+  /* Hide left sidebar on mobile screens */
+  .left-sidebar {
+    display: none;
   }
 }

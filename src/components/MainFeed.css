@@ -1,8 +1,9 @@
 .main-feed {
-  width: 500px;
+  width: 600px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 20px;
   min-height: calc(100vh - 56px);
+  margin-left: 300px; /* Account for left sidebar width + padding */
 }
 
 .posts-container {
@@ -12,15 +13,17 @@
 /* Responsive design */
 @media (max-width: 1200px) {
   .main-feed {
-    width: 100%;
-    max-width: 500px;
+    width: calc(100% - 300px);
+    max-width: 600px;
     padding: 20px 16px;
+    margin-left: 300px;
   }
 }
 
 @media (max-width: 768px) {
   .main-feed {
     width: 100%;
+    margin-left: 0;
     padding: 20px 8px;
   }
 }
