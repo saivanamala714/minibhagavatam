@@ -1,7 +1,7 @@
 import React from 'react';
-import './PostCreator.css';
+import './QuoteOfTheDay.css';
 
-const PostCreator = () => {
+const QuoteOfTheDay = () => {
   const bhagavatamQuote = {
     text: "धर्मः प्रोज्झितकैतवोऽत्र परमो निर्मत्सराणां सतां वेद्यं वास्तवमत्र वस्तु शिवदं तापत्रयोन्मूलनम्।",
     translation: "Completely rejecting all religious activities which are materially motivated, this Bhagavata Purana propounds the highest truth, which is understandable by those devotees who are fully pure in heart.",
@@ -10,7 +10,7 @@ const PostCreator = () => {
   };
 
   return (
-    <div className="post-creator quote-of-day">
+    <div className="quote-of-day">
       <div className="quote-header">
         <div className="quote-icon">�</div>
         <h3 className="quote-title">Quote of the Day</h3>
@@ -52,4 +52,4 @@ const PostCreator = () => {
   );
 };
 
-export default PostCreator;
+export default QuoteOfTheDay;

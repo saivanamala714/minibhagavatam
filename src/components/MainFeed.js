@@ -1,5 +1,5 @@
 import React from 'react';
-import PostCreator from './PostCreator';
+import QuoteOfTheDay from './QuoteOfTheDay';
 import Post from './Post';
 import summaryData from '../summaryInFiftyWords.json';
 import './MainFeed.css';
@@ -18,7 +18,7 @@ const MainFeed = () => {
 
   return (
     <div className="main-feed">
-      <PostCreator />
+      <QuoteOfTheDay />
       <div className="posts-container">
         {posts.map(post => (
           <Post key={post.id} post={post} />

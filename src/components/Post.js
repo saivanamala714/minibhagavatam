@@ -10,7 +10,6 @@ const Post = ({ post }) => {
           <div className="post-avatar">{post.user.avatar}</div>
           <div className="post-user-details">
             <h4 className="post-username">{post.user.name}</h4>
-            <span className="post-time">{post.user.time} ago</span>
           </div>
         </div>
         <div className="post-options">
