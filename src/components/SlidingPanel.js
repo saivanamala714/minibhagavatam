@@ -1,11 +1,27 @@
+import { useState } from 'react';
 import './SlidingPanel.css';
 
 const SlidingPanel = ({ onClose }) => {
+  const [expandedCards, setExpandedCards] = useState({
+    card1: true,
+    card2: false,
+    card3: false,
+    card4: false,
+    card5: false
+  });
+
   // Close panel when clicking outside
   const handleOverlayClick = (e) => {
     if (e.target.classList.contains('panel-overlay')) {
       onClose();
     }
+  };
+
+  const toggleCard = (cardId) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [cardId]: !prev[cardId]
+    }));
   };
 
   return (
@@ -24,128 +40,153 @@ const SlidingPanel = ({ onClose }) => {
 
             <div className="events-list">
               <div className="event-card">
-                <div className="event-date-header">
+                <div className="event-date-header" onClick={() => toggleCard('card1')}>
                   <div className="date-icon">📅</div>
                   <div className="date-text">December 15, 2024</div>
-                </div>
-                <div className="event-details">
-                  <div className="detail-item">
-                    <span className="detail-label">Host:</span>
-                    <span className="detail-value">Ramya</span>
-                  </div>
-                  <div className="detail-item">
-                    <span className="detail-label">Timing:</span>
-                    <span className="detail-value">6:00 PM</span>
-                  </div>
-                  <div className="detail-item">
-                    <span className="detail-label">Address:</span>
-                    <span className="detail-value">706 Arcadia Dr</span>
-                  </div>
-                  <div className="detail-item description">
-                    <span className="detail-label">Description:</span>
-                    <span className="detail-value">Bhakti Vriksha session exploring Canto 1 with devotional discussions and community fellowship.</span>
+                  <div className="collapse-button">
+                    {expandedCards.card1 ? '▼' : '▶'}
                   </div>
                 </div>
+                {expandedCards.card1 && (
+                  <div className="event-details">
+                    <div className="detail-item">
+                      <span className="detail-label">Host:</span>
+                      <span className="detail-value">Ramya</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Timing:</span>
+                      <span className="detail-value">6:00 PM</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Address:</span>
+                      <span className="detail-value">706 Arcadia Dr</span>
+                    </div>
+                    <div className="detail-item description">
+                      <span className="detail-label">Description:</span>
+                      <span className="detail-value">Bhakti Vriksha session exploring Canto 1 with devotional discussions and community fellowship.</span>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="event-card">
-                <div className="event-date-header">
+                <div className="event-date-header" onClick={() => toggleCard('card2')}>
                   <div className="date-icon">📅</div>
                   <div className="date-text">December 22, 2024</div>
-                </div>
-                <div className="event-details">
-                  <div className="detail-item">
-                    <span className="detail-label">Host:</span>
-                    <span className="detail-value">Krishna Das</span>
-                  </div>
-                  <div className="detail-item">
-                    <span className="detail-label">Timing:</span>
-                    <span className="detail-value">7:00 PM</span>
-                  </div>
-                  <div className="detail-item">
-                    <span className="detail-label">Address:</span>
-                    <span className="detail-value">123 Temple Street</span>
-                  </div>
-                  <div className="detail-item description">
-                    <span className="detail-label">Description:</span>
-                    <span className="detail-value">Special Kirtan evening with traditional devotional songs and spiritual discourse on Bhagavatam teachings.</span>
+                  <div className="collapse-button">
+                    {expandedCards.card2 ? '▼' : '▶'}
                   </div>
                 </div>
+                {expandedCards.card2 && (
+                  <div className="event-details">
+                    <div className="detail-item">
+                      <span className="detail-label">Host:</span>
+                      <span className="detail-value">Krishna Das</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Timing:</span>
+                      <span className="detail-value">7:00 PM</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Address:</span>
+                      <span className="detail-value">123 Temple Street</span>
+                    </div>
+                    <div className="detail-item description">
+                      <span className="detail-label">Description:</span>
+                      <span className="detail-value">Special Kirtan evening with traditional devotional songs and spiritual discourse on Bhagavatam teachings.</span>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="event-card">
-                <div className="event-date-header">
+                <div className="event-date-header" onClick={() => toggleCard('card3')}>
                   <div className="date-icon">📅</div>
                   <div className="date-text">December 29, 2024</div>
-                </div>
-                <div className="event-details">
-                  <div className="detail-item">
-                    <span className="detail-label">Host:</span>
-                    <span className="detail-value">Priya Sharma</span>
-                  </div>
-                  <div className="detail-item">
-                    <span className="detail-label">Timing:</span>
-                    <span className="detail-value">5:30 PM</span>
-                  </div>
-                  <div className="detail-item">
-                    <span className="detail-label">Address:</span>
-                    <span className="detail-value">456 Lotus Avenue</span>
-                  </div>
-                  <div className="detail-item description">
-                    <span className="detail-label">Description:</span>
-                    <span className="detail-value">Year-end celebration with Bhagavatam recitation, prasadam sharing, and community bonding activities.</span>
+                  <div className="collapse-button">
+                    {expandedCards.card3 ? '▼' : '▶'}
                   </div>
                 </div>
+                {expandedCards.card3 && (
+                  <div className="event-details">
+                    <div className="detail-item">
+                      <span className="detail-label">Host:</span>
+                      <span className="detail-value">Priya Sharma</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Timing:</span>
+                      <span className="detail-value">5:30 PM</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Address:</span>
+                      <span className="detail-value">456 Lotus Avenue</span>
+                    </div>
+                    <div className="detail-item description">
+                      <span className="detail-label">Description:</span>
+                      <span className="detail-value">Year-end celebration with Bhagavatam recitation, prasadam sharing, and community bonding activities.</span>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="event-card">
-                <div className="event-date-header">
+                <div className="event-date-header" onClick={() => toggleCard('card4')}>
                   <div className="date-icon">📅</div>
                   <div className="date-text">January 5, 2025</div>
-                </div>
-                <div className="event-details">
-                  <div className="detail-item">
-                    <span className="detail-label">Host:</span>
-                    <span className="detail-value">Govind Patel</span>
-                  </div>
-                  <div className="detail-item">
-                    <span className="detail-label">Timing:</span>
-                    <span className="detail-value">6:30 PM</span>
-                  </div>
-                  <div className="detail-item">
-                    <span className="detail-label">Address:</span>
-                    <span className="detail-value">789 Vrindavan Circle</span>
-                  </div>
-                  <div className="detail-item description">
-                    <span className="detail-label">Description:</span>
-                    <span className="detail-value">New Year spiritual gathering focusing on Canto 2 with meditation and philosophical discussions.</span>
+                  <div className="collapse-button">
+                    {expandedCards.card4 ? '▼' : '▶'}
                   </div>
                 </div>
+                {expandedCards.card4 && (
+                  <div className="event-details">
+                    <div className="detail-item">
+                      <span className="detail-label">Host:</span>
+                      <span className="detail-value">Govind Patel</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Timing:</span>
+                      <span className="detail-value">6:30 PM</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Address:</span>
+                      <span className="detail-value">789 Vrindavan Circle</span>
+                    </div>
+                    <div className="detail-item description">
+                      <span className="detail-label">Description:</span>
+                      <span className="detail-value">New Year spiritual gathering focusing on Canto 2 with meditation and philosophical discussions.</span>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="event-card">
-                <div className="event-date-header">
+                <div className="event-date-header" onClick={() => toggleCard('card5')}>
                   <div className="date-icon">📅</div>
                   <div className="date-text">January 12, 2025</div>
-                </div>
-                <div className="event-details">
-                  <div className="detail-item">
-                    <span className="detail-label">Host:</span>
-                    <span className="detail-value">Radha Devi</span>
-                  </div>
-                  <div className="detail-item">
-                    <span className="detail-label">Timing:</span>
-                    <span className="detail-value">4:00 PM</span>
-                  </div>
-                  <div className="detail-item">
-                    <span className="detail-label">Address:</span>
-                    <span className="detail-value">321 Gokul Gardens</span>
-                  </div>
-                  <div className="detail-item description">
-                    <span className="detail-label">Description:</span>
-                    <span className="detail-value">Interactive workshop on Bhakti principles with practical applications in daily life and spiritual growth.</span>
+                  <div className="collapse-button">
+                    {expandedCards.card5 ? '▼' : '▶'}
                   </div>
                 </div>
+                {expandedCards.card5 && (
+                  <div className="event-details">
+                    <div className="detail-item">
+                      <span className="detail-label">Host:</span>
+                      <span className="detail-value">Radha Devi</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Timing:</span>
+                      <span className="detail-value">4:00 PM</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Address:</span>
+                      <span className="detail-value">321 Gokul Gardens</span>
+                    </div>
+                    <div className="detail-item description">
+                      <span className="detail-label">Description:</span>
+                      <span className="detail-value">Interactive workshop on Bhakti principles with practical applications in daily life and spiritual growth.</span>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
