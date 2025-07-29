@@ -94,9 +94,6 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
       <div className="sliding-panel">
         <div className="panel-header">
           <h3 className="panel-title">{title}</h3>
-          <button className="close-button" onClick={onClose}>
-            ✕
-          </button>
         </div>
         
         <div className="panel-content">
@@ -148,12 +145,6 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
           ) : (
             <AddEventForm onAdd={addNewEvent} onCancel={onBackToEvents} />
           )}
-        </div>
-
-        <div className="panel-footer">
-          <button className="action-button" onClick={onClose}>
-            Close
-          </button>
         </div>
       </div>
     </div>
