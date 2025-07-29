@@ -12,17 +12,20 @@
 
 .sliding-panel {
   position: fixed;
-  top: 0;
+  top: 50%;
   right: 0;
-  width: 400px;
-  height: 100vh;
+  transform: translateY(-50%);
+  width: 450px;
+  height: 500px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.9) 100%);
-  box-shadow: 
+  box-shadow:
     -10px 0 30px rgba(0, 0, 0, 0.2),
+    0 10px 30px rgba(0, 0, 0, 0.15),
     0 0 0 1px rgba(255, 255, 255, 0.3),
     inset 1px 0 0 rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(20px);
-  overflow-y: auto;
+  border-radius: 20px 0 0 20px;
+  overflow: hidden;
   animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: flex;
   flex-direction: column;
@@ -72,16 +75,17 @@
 }
 
 .panel-content {
-  padding: 28px;
+  padding: 20px 28px;
   flex: 1;
   overflow-y: auto;
+  max-height: 350px;
 }
 
 .menu-item {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 20px 0;
+  gap: 16px;
+  padding: 16px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease;
   cursor: pointer;
@@ -100,9 +104,9 @@
 }
 
 .menu-icon {
-  font-size: 28px;
-  width: 50px;
-  height: 50px;
+  font-size: 24px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,7 +143,7 @@
 }
 
 .panel-footer {
-  padding: 24px 28px;
+  padding: 20px 28px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   background: rgba(248, 249, 250, 0.5);
   flex-shrink: 0;
@@ -228,47 +232,57 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .sliding-panel {
-    width: 320px;
+    width: 350px;
+    height: 450px;
   }
-  
+
   .panel-header {
-    padding: 20px 24px;
+    padding: 18px 24px;
   }
-  
+
   .panel-content {
-    padding: 24px;
+    padding: 16px 24px;
+    max-height: 300px;
   }
-  
+
   .panel-footer {
-    padding: 20px 24px;
+    padding: 18px 24px;
   }
-  
+
   .menu-item {
-    padding: 16px 0;
+    padding: 14px 0;
   }
-  
+
   .menu-icon {
-    width: 44px;
-    height: 44px;
-    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .sliding-panel {
-    width: 100%;
-    right: 0;
+    width: 95%;
+    height: 400px;
+    top: 50%;
+    right: 2.5%;
+    transform: translateY(-50%);
+    border-radius: 20px;
   }
-  
+
   .panel-title {
     font-size: var(--font-size-xl);
   }
-  
+
   .menu-label {
     font-size: var(--font-size-base);
   }
-  
+
   .menu-description {
     font-size: var(--font-size-xs);
+  }
+
+  .panel-content {
+    max-height: 250px;
   }
 }
