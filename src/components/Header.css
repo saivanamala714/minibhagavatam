@@ -132,6 +132,45 @@
   z-index: 10;
 }
 
+.popup-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family-primary);
+  color: var(--text-secondary);
+}
+
+.popup-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.button-icon {
+  font-size: 16px;
+  transition: transform 0.2s;
+}
+
+.button-text {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.5px;
+}
+
+.popup-button:hover .button-icon {
+  transform: scale(1.1);
+}
+
 
 
 .logo-text {
@@ -238,6 +277,17 @@
     0 0 20px rgba(0, 191, 255, 0.1);
 }
 
+.dark-mode .popup-button {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+}
+
+.dark-mode .popup-button:hover {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 
 
 /* Responsive design */
@@ -271,6 +321,11 @@
     gap: 8px;
   }
 
+  .popup-button {
+    padding: 4px 8px;
+    gap: 6px;
+  }
+
   .button-icon {
     font-size: 14px;
   }
@@ -297,6 +352,10 @@
 
   .button-text {
     display: none; /* Hide button text on very small screens */
+  }
+
+  .popup-button {
+    padding: 4px 6px;
   }
 
 
