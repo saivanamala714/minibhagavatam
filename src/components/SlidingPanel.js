@@ -21,27 +21,57 @@ const SlidingPanel = ({ onClose }) => {
         <div className="panel-content">
           <div className="event-info-section">
             <h4 className="event-info-title">Event Information</h4>
-            <div className="event-info-list">
-              <div className="event-info-item">
-                <span className="bullet">•</span>
-                <span className="event-key">Event Host Name:</span>
-                <span className="event-value">Ramya</span>
-              </div>
-              <div className="event-info-item">
-                <span className="bullet">•</span>
-                <span className="event-key">Event Location:</span>
-                <span className="event-value">706 Arcadia Dr</span>
-              </div>
-            </div>
 
-            <div className="timing-card">
-              <div className="card-header">
-                <div className="card-icon">🕕</div>
-                <div className="card-title">Event Timing</div>
+            <div className="cards-grid">
+              <div className="info-card host-card">
+                <div className="card-header">
+                  <div className="card-icon">👤</div>
+                  <div className="card-title">Host</div>
+                </div>
+                <div className="card-content">
+                  <div className="card-value">Ramya</div>
+                </div>
               </div>
-              <div className="card-content">
-                <div className="timing-display">6pm</div>
-                <div className="timing-subtitle">Today's Session</div>
+
+              <div className="info-card timing-card">
+                <div className="card-header">
+                  <div className="card-icon">🕕</div>
+                  <div className="card-title">Timing</div>
+                </div>
+                <div className="card-content">
+                  <div className="card-value">6pm</div>
+                </div>
+              </div>
+
+              <div className="info-card location-card">
+                <div className="card-header">
+                  <div className="card-icon">📍</div>
+                  <div className="card-title">Location</div>
+                </div>
+                <div className="card-content">
+                  <div className="card-value">706 Arcadia Dr</div>
+                </div>
+              </div>
+
+              <div className="info-card participants-card">
+                <div className="card-header">
+                  <div className="card-icon">👥</div>
+                  <div className="card-title">Participants</div>
+                </div>
+                <div className="card-content">
+                  <div className="card-value">25</div>
+                  <div className="card-subtitle">Expected</div>
+                </div>
+              </div>
+
+              <div className="info-card description-card full-width">
+                <div className="card-header">
+                  <div className="card-icon">📝</div>
+                  <div className="card-title">Description</div>
+                </div>
+                <div className="card-content">
+                  <div className="card-description">Join us for an enlightening session of Bhakti Vriksha, exploring the spiritual teachings of the Bhagavatam with devotional discussions and community fellowship.</div>
+                </div>
               </div>
             </div>
           </div>
