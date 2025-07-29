@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import DarkModeToggle from './DarkModeToggle';
-import CenterPopup from './CenterPopup';
+import SlidingPanel from './SlidingPanel';
 import './Header.css';
 
 const Header = () => {
@@ -36,7 +36,7 @@ const Header = () => {
           </button>
         </div>
       </div>
-      {showPopup && <CenterPopup onClose={() => setShowPopup(false)} />}
+      {showPopup && <SlidingPanel onClose={() => setShowPopup(false)} />}
     </>
   );
 };
