@@ -54,6 +54,7 @@ const Header = () => {
           mode={popupMode}
           onShowAddEvent={showAddEventForm}
           onBackToEvents={backToEvents}
+          title={popupMode === 'events' ? 'Upcoming Events' : 'Add New Event'}
         />
       )}
     </>

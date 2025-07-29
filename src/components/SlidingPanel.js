@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './SlidingPanel.css';
 
-const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents }) => {
+const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents, title = 'Upcoming Events' }) => {
   const [expandedCards, setExpandedCards] = useState({
     card1: true,
     card2: false,
@@ -93,7 +93,7 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
     <div className="panel-overlay" onClick={handleOverlayClick}>
       <div className="sliding-panel">
         <div className="panel-header">
-          <h3 className="panel-title">Event Details</h3>
+          <h3 className="panel-title">{title}</h3>
           <button className="close-button" onClick={onClose}>
             ✕
           </button>
@@ -102,8 +102,6 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
         <div className="panel-content">
           {mode === 'events' ? (
             <div className="events-section">
-              <h4 className="events-title">Upcoming Events</h4>
-
               <div className="events-list">
                 {events.map((event) => (
                   <div key={event.id} className="event-card">
@@ -164,9 +162,26 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
 };
 
 const AddEventForm = ({ onAdd, onCancel }) => {
+  // Get today's date in YYYY-MM-DD format for date input
+  const getTodayDate = () => {
+    const today = new Date();
+    return today.toISOString().split('T')[0];
+  };
+
+  // Get today's date in readable format for display
+  const getTodayFormatted = () => {
+    const today = new Date();
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    };
+    return today.toLocaleDateString('en-US', options);
+  };
+
   const [formData, setFormData] = useState({
-    date: '',
-    dateRaw: '',
+    date: getTodayFormatted(),
+    dateRaw: getTodayDate(),
     title: '',
     host: '',
     timing: '',
@@ -179,8 +194,8 @@ const AddEventForm = ({ onAdd, onCancel }) => {
     if (formData.date && formData.title && formData.host) {
       onAdd(formData);
       setFormData({
-        date: '',
-        dateRaw: '',
+        date: getTodayFormatted(),
+        dateRaw: getTodayDate(),
         title: '',
         host: '',
         timing: '',
