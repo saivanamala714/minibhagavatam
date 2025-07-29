@@ -1,9 +1,10 @@
 .main-feed {
-  width: 600px;
+  width: 620px;
   margin: 0 auto;
   padding: 20px;
   min-height: calc(100vh - 56px);
-  margin-left: 300px; /* Account for left sidebar width + padding */
+  position: relative;
+  left: 140px; /* Slight offset to account for left sidebar but keep centered */
 }
 
 .posts-container {
@@ -13,17 +14,18 @@
 /* Responsive design */
 @media (max-width: 1200px) {
   .main-feed {
-    width: calc(100% - 300px);
-    max-width: 600px;
+    width: 620px;
+    max-width: calc(100% - 320px);
     padding: 20px 16px;
-    margin-left: 300px;
+    left: 140px;
   }
 }
 
 @media (max-width: 768px) {
   .main-feed {
     width: 100%;
-    margin-left: 0;
+    max-width: 620px;
+    left: 0;
     padding: 20px 8px;
   }
 }
