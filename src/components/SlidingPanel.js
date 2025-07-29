@@ -10,6 +10,56 @@ const SlidingPanel = ({ onClose }) => {
     card5: false
   });
 
+  const [events, setEvents] = useState([
+    {
+      id: 'card1',
+      date: 'December 15, 2024',
+      title: 'Bhakti Vriksha Canto 1 Session',
+      host: 'Ramya',
+      timing: '6:00 PM',
+      address: '706 Arcadia Dr',
+      description: 'Bhakti Vriksha session exploring Canto 1 with devotional discussions and community fellowship.'
+    },
+    {
+      id: 'card2',
+      date: 'December 22, 2024',
+      title: 'Special Kirtan Evening',
+      host: 'Krishna Das',
+      timing: '7:00 PM',
+      address: '123 Temple Street',
+      description: 'Special Kirtan evening with traditional devotional songs and spiritual discourse on Bhagavatam teachings.'
+    },
+    {
+      id: 'card3',
+      date: 'December 29, 2024',
+      title: 'Year-End Celebration',
+      host: 'Priya Sharma',
+      timing: '5:30 PM',
+      address: '456 Lotus Avenue',
+      description: 'Year-end celebration with Bhagavatam recitation, prasadam sharing, and community bonding activities.'
+    },
+    {
+      id: 'card4',
+      date: 'January 5, 2025',
+      title: 'New Year Spiritual Gathering',
+      host: 'Govind Patel',
+      timing: '6:30 PM',
+      address: '789 Vrindavan Circle',
+      description: 'New Year spiritual gathering focusing on Canto 2 with meditation and philosophical discussions.'
+    },
+    {
+      id: 'card5',
+      date: 'January 12, 2025',
+      title: 'Bhakti Principles Workshop',
+      host: 'Radha Devi',
+      timing: '4:00 PM',
+      address: '321 Gokul Gardens',
+      description: 'Interactive workshop on Bhakti principles with practical applications in daily life and spiritual growth.'
+    }
+  ]);
+
+  const [showAddForm, setShowAddForm] = useState(false);
+
   // Close panel when clicking outside
   const handleOverlayClick = (e) => {
     if (e.target.classList.contains('panel-overlay')) {
@@ -22,6 +72,21 @@ const SlidingPanel = ({ onClose }) => {
       ...prev,
       [cardId]: !prev[cardId]
     }));
+  };
+
+  const addNewEvent = (eventData) => {
+    const newEventId = `card${events.length + 1}`;
+    const newEvent = {
+      id: newEventId,
+      ...eventData
+    };
+
+    setEvents(prev => [...prev, newEvent]);
+    setExpandedCards(prev => ({
+      ...prev,
+      [newEventId]: true
+    }));
+    setShowAddForm(false);
   };
 
   return (
@@ -39,156 +104,51 @@ const SlidingPanel = ({ onClose }) => {
             <h4 className="events-title">Upcoming Events</h4>
 
             <div className="events-list">
-              <div className="event-card">
-                <div className="event-date-header" onClick={() => toggleCard('card1')}>
-                  <div className="date-icon">📅</div>
-                  <div className="date-text">December 15, 2024</div>
-                  <div className="collapse-button">
-                    {expandedCards.card1 ? '▼' : '▶'}
-                  </div>
-                </div>
-                <div className="event-title-section">
-                  <h5 className="event-title">Bhakti Vriksha Canto 1 Session</h5>
-                  <span className="event-host">by Ramya</span>
-                </div>
-                {expandedCards.card1 && (
-                  <div className="event-details">
-                    <div className="detail-item">
-                      <span className="detail-label">Timing:</span>
-                      <span className="detail-value">6:00 PM</span>
-                    </div>
-                    <div className="detail-item">
-                      <span className="detail-label">Address:</span>
-                      <span className="detail-value">706 Arcadia Dr</span>
-                    </div>
-                    <div className="detail-item description">
-                      <span className="detail-label">Description:</span>
-                      <span className="detail-value">Bhakti Vriksha session exploring Canto 1 with devotional discussions and community fellowship.</span>
+              {events.map((event) => (
+                <div key={event.id} className="event-card">
+                  <div className="event-date-header" onClick={() => toggleCard(event.id)}>
+                    <div className="date-icon">📅</div>
+                    <div className="date-text">{event.date}</div>
+                    <div className="collapse-button">
+                      {expandedCards[event.id] ? '▼' : '▶'}
                     </div>
                   </div>
-                )}
-              </div>
+                  <div className="event-title-section">
+                    <h5 className="event-title">{event.title}</h5>
+                    <span className="event-host">by {event.host}</span>
+                  </div>
+                  {expandedCards[event.id] && (
+                    <div className="event-details">
+                      <div className="detail-item">
+                        <span className="detail-label">Timing:</span>
+                        <span className="detail-value">{event.timing}</span>
+                      </div>
+                      <div className="detail-item">
+                        <span className="detail-label">Address:</span>
+                        <span className="detail-value">{event.address}</span>
+                      </div>
+                      <div className="detail-item description">
+                        <span className="detail-label">Description:</span>
+                        <span className="detail-value">{event.description}</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
 
-              <div className="event-card">
-                <div className="event-date-header" onClick={() => toggleCard('card2')}>
-                  <div className="date-icon">📅</div>
-                  <div className="date-text">December 22, 2024</div>
-                  <div className="collapse-button">
-                    {expandedCards.card2 ? '▼' : '▶'}
-                  </div>
-                </div>
-                <div className="event-title-section">
-                  <h5 className="event-title">Special Kirtan Evening</h5>
-                  <span className="event-host">by Krishna Das</span>
-                </div>
-                {expandedCards.card2 && (
-                  <div className="event-details">
-                    <div className="detail-item">
-                      <span className="detail-label">Timing:</span>
-                      <span className="detail-value">7:00 PM</span>
-                    </div>
-                    <div className="detail-item">
-                      <span className="detail-label">Address:</span>
-                      <span className="detail-value">123 Temple Street</span>
-                    </div>
-                    <div className="detail-item description">
-                      <span className="detail-label">Description:</span>
-                      <span className="detail-value">Special Kirtan evening with traditional devotional songs and spiritual discourse on Bhagavatam teachings.</span>
-                    </div>
-                  </div>
-                )}
-              </div>
 
-              <div className="event-card">
-                <div className="event-date-header" onClick={() => toggleCard('card3')}>
-                  <div className="date-icon">📅</div>
-                  <div className="date-text">December 29, 2024</div>
-                  <div className="collapse-button">
-                    {expandedCards.card3 ? '▼' : '▶'}
-                  </div>
-                </div>
-                <div className="event-title-section">
-                  <h5 className="event-title">Year-End Celebration</h5>
-                  <span className="event-host">by Priya Sharma</span>
-                </div>
-                {expandedCards.card3 && (
-                  <div className="event-details">
-                    <div className="detail-item">
-                      <span className="detail-label">Timing:</span>
-                      <span className="detail-value">5:30 PM</span>
-                    </div>
-                    <div className="detail-item">
-                      <span className="detail-label">Address:</span>
-                      <span className="detail-value">456 Lotus Avenue</span>
-                    </div>
-                    <div className="detail-item description">
-                      <span className="detail-label">Description:</span>
-                      <span className="detail-value">Year-end celebration with Bhagavatam recitation, prasadam sharing, and community bonding activities.</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <div className="event-card">
-                <div className="event-date-header" onClick={() => toggleCard('card4')}>
-                  <div className="date-icon">📅</div>
-                  <div className="date-text">January 5, 2025</div>
-                  <div className="collapse-button">
-                    {expandedCards.card4 ? '▼' : '▶'}
-                  </div>
-                </div>
-                <div className="event-title-section">
-                  <h5 className="event-title">New Year Spiritual Gathering</h5>
-                  <span className="event-host">by Govind Patel</span>
-                </div>
-                {expandedCards.card4 && (
-                  <div className="event-details">
-                    <div className="detail-item">
-                      <span className="detail-label">Timing:</span>
-                      <span className="detail-value">6:30 PM</span>
-                    </div>
-                    <div className="detail-item">
-                      <span className="detail-label">Address:</span>
-                      <span className="detail-value">789 Vrindavan Circle</span>
-                    </div>
-                    <div className="detail-item description">
-                      <span className="detail-label">Description:</span>
-                      <span className="detail-value">New Year spiritual gathering focusing on Canto 2 with meditation and philosophical discussions.</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <div className="event-card">
-                <div className="event-date-header" onClick={() => toggleCard('card5')}>
-                  <div className="date-icon">📅</div>
-                  <div className="date-text">January 12, 2025</div>
-                  <div className="collapse-button">
-                    {expandedCards.card5 ? '▼' : '▶'}
-                  </div>
-                </div>
-                <div className="event-title-section">
-                  <h5 className="event-title">Bhakti Principles Workshop</h5>
-                  <span className="event-host">by Radha Devi</span>
-                </div>
-                {expandedCards.card5 && (
-                  <div className="event-details">
-                    <div className="detail-item">
-                      <span className="detail-label">Timing:</span>
-                      <span className="detail-value">4:00 PM</span>
-                    </div>
-                    <div className="detail-item">
-                      <span className="detail-label">Address:</span>
-                      <span className="detail-value">321 Gokul Gardens</span>
-                    </div>
-                    <div className="detail-item description">
-                      <span className="detail-label">Description:</span>
-                      <span className="detail-value">Interactive workshop on Bhakti principles with practical applications in daily life and spiritual growth.</span>
-                    </div>
-                  </div>
-                )}
+              <div className="add-event-section">
+                <button
+                  className="add-event-button"
+                  onClick={() => setShowAddForm(true)}
+                >
+                  <span className="add-icon">➕</span>
+                  <span className="add-text">Add New Event</span>
+                </button>
               </div>
             </div>
+
+            {showAddForm && <AddEventForm onAdd={addNewEvent} onCancel={() => setShowAddForm(false)} />}
           </div>
         </div>
 
@@ -197,6 +157,136 @@ const SlidingPanel = ({ onClose }) => {
             Close
           </button>
         </div>
+      </div>
+    </div>
+  );
+};
+
+const AddEventForm = ({ onAdd, onCancel }) => {
+  const [formData, setFormData] = useState({
+    date: '',
+    title: '',
+    host: '',
+    timing: '',
+    address: '',
+    description: ''
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.date && formData.title && formData.host) {
+      onAdd(formData);
+      setFormData({
+        date: '',
+        title: '',
+        host: '',
+        timing: '',
+        address: '',
+        description: ''
+      });
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  return (
+    <div className="add-event-overlay" onClick={(e) => e.target.classList.contains('add-event-overlay') && onCancel()}>
+      <div className="add-event-form">
+        <div className="form-header">
+          <h4 className="form-title">Add New Event</h4>
+          <button className="form-close-button" onClick={onCancel}>✕</button>
+        </div>
+
+        <form onSubmit={handleSubmit} className="event-form">
+          <div className="form-group">
+            <label className="form-label">Event Date *</label>
+            <input
+              type="text"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              placeholder="e.g., January 20, 2025"
+              className="form-input"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Event Title *</label>
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              placeholder="e.g., Bhakti Yoga Workshop"
+              className="form-input"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Host Name *</label>
+            <input
+              type="text"
+              name="host"
+              value={formData.host}
+              onChange={handleChange}
+              placeholder="e.g., John Doe"
+              className="form-input"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Timing</label>
+            <input
+              type="text"
+              name="timing"
+              value={formData.timing}
+              onChange={handleChange}
+              placeholder="e.g., 7:00 PM"
+              className="form-input"
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Address</label>
+            <input
+              type="text"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              placeholder="e.g., 123 Main Street"
+              className="form-input"
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Description</label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              placeholder="Describe the event..."
+              className="form-textarea"
+              rows="3"
+            />
+          </div>
+
+          <div className="form-actions">
+            <button type="button" className="cancel-button" onClick={onCancel}>
+              Cancel
+            </button>
+            <button type="submit" className="submit-button">
+              Add Event
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
