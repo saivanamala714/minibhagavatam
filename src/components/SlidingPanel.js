@@ -166,6 +166,7 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
 const AddEventForm = ({ onAdd, onCancel }) => {
   const [formData, setFormData] = useState({
     date: '',
+    dateRaw: '',
     title: '',
     host: '',
     timing: '',
@@ -179,6 +180,7 @@ const AddEventForm = ({ onAdd, onCancel }) => {
       onAdd(formData);
       setFormData({
         date: '',
+        dateRaw: '',
         title: '',
         host: '',
         timing: '',
@@ -189,9 +191,24 @@ const AddEventForm = ({ onAdd, onCancel }) => {
   };
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    let processedValue = value;
+
+    // Format date for display in event cards
+    if (name === 'date' && value) {
+      const dateObj = new Date(value);
+      const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      };
+      processedValue = dateObj.toLocaleDateString('en-US', options);
+    }
+
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: name === 'date' ? processedValue : value,
+      [`${name}Raw`]: name === 'date' ? value : undefined
     }));
   };
 
@@ -208,15 +225,17 @@ const AddEventForm = ({ onAdd, onCancel }) => {
         <form onSubmit={handleSubmit} className="event-form">
           <div className="form-group">
             <label className="form-label">Event Date *</label>
-            <input
-              type="text"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              placeholder="e.g., January 20, 2025"
-              className="form-input"
-              required
-            />
+            <div className="date-input-wrapper">
+              <input
+                type="date"
+                name="date"
+                value={formData.dateRaw || ''}
+                onChange={handleChange}
+                className="form-input date-input"
+                required
+              />
+              <span className="date-icon">📅</span>
+            </div>
           </div>
 
           <div className="form-group">
