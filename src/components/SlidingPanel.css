@@ -126,7 +126,7 @@
   padding: 16px 20px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
@@ -136,22 +136,12 @@
   background: linear-gradient(135deg, #2a4a82 0%, #5aa0f2 100%);
 }
 
-.date-icon {
-  font-size: 20px;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-}
+
 
 .date-text {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   font-family: var(--font-family-primary);
-  flex: 1;
 }
 
 .collapse-button {
@@ -379,9 +369,7 @@
   background: linear-gradient(135deg, #00bfff 0%, #4a90e2 100%);
 }
 
-.dark-mode .date-icon {
-  background: rgba(0, 0, 0, 0.2);
-}
+
 
 .dark-mode .event-date-header:hover {
   background: linear-gradient(135deg, #10cfff 0%, #5aa0f2 100%);
@@ -687,8 +675,7 @@
 .add-event-inline .form-header {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 24px;
+  padding: 20px 24px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   background: linear-gradient(135deg, rgba(38, 222, 129, 0.1) 0%, rgba(32, 191, 107, 0.05) 100%);
 }
@@ -719,25 +706,7 @@
   font-weight: bold;
 }
 
-.add-event-inline .form-title {
-  margin: 0;
-  flex: 1;
-  text-align: center;
-  position: relative;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #26de81 0%, #20bf6b 100%);
-  color: white;
-  border-radius: 50px;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
-  box-shadow:
-    0 4px 15px rgba(38, 222, 129, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
+
 
 .add-event-inline .event-form {
   flex: 1;
@@ -754,13 +723,7 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-.dark-mode .add-event-inline .form-title {
-  background: linear-gradient(135deg, #00d2d3 0%, #01a3a4 100%);
-  border: 2px solid rgba(0, 210, 211, 0.3);
-  box-shadow:
-    0 4px 15px rgba(0, 210, 211, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
+
 
 .dark-mode .date-icon {
   color: var(--text-secondary);
@@ -832,12 +795,6 @@
 
   .event-date-header {
     padding: 12px 16px;
-  }
-
-  .date-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 18px;
   }
 
   .date-text {
@@ -920,12 +877,6 @@
 
   .event-date-header {
     padding: 10px 14px;
-  }
-
-  .date-icon {
-    width: 28px;
-    height: 28px;
-    font-size: 16px;
   }
 
   .date-text {

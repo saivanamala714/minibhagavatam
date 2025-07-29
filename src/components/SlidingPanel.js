@@ -106,7 +106,6 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
                 {events.map((event) => (
                   <div key={event.id} className="event-card">
                     <div className="event-date-header" onClick={() => toggleCard(event.id)}>
-                      <div className="date-icon">📅</div>
                       <div className="date-text">{event.date}</div>
                       <div className="collapse-button">
                         {expandedCards[event.id] ? '▼' : '▶'}
@@ -234,7 +233,6 @@ const AddEventForm = ({ onAdd, onCancel }) => {
           <span className="back-icon">←</span>
           <span className="back-text">Back to Events</span>
         </button>
-        <h4 className="form-title">Add New Event</h4>
       </div>
 
         <form onSubmit={handleSubmit} className="event-form">
