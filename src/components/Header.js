@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import DarkModeToggle from './DarkModeToggle';
 import './Header.css';
 
 const Header = () => {
@@ -19,6 +20,9 @@ const Header = () => {
     <div className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="logo">
         <span className="logo-text">Bhakti Vriksha</span>
+      </div>
+      <div className="header-right">
+        <DarkModeToggle />
       </div>
     </div>
   );

@@ -215,3 +215,67 @@
     font-size: 14px;
   }
 }
+
+/* Dark Mode Styles */
+.dark-mode .quote-of-day {
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(22, 33, 62, 0.85) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .quote-title {
+  color: #ffffff;
+}
+
+.dark-mode .sanskrit-quote {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #ffd700;
+  border-left: 4px solid #00bfff;
+}
+
+.dark-mode .quote-translation {
+  color: #e0e0e0;
+}
+
+.dark-mode .quote-reference {
+  color: #b0b0b0;
+}
+
+.dark-mode .quote-author {
+  color: #888;
+}
+
+.dark-mode .quote-source {
+  color: #666;
+}
+
+.dark-mode .offline-indicator {
+  background-color: rgba(255, 152, 0, 0.2);
+  border: 1px solid rgba(255, 152, 0, 0.4);
+}
+
+.dark-mode .online-indicator {
+  background-color: rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.dark-mode .krishna-indicator {
+  background-color: rgba(103, 58, 183, 0.2);
+  border: 1px solid rgba(103, 58, 183, 0.4);
+}
+
+.dark-mode .quote-action:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .action-text {
+  color: #b0b0b0;
+}
+
+.dark-mode .quote-loading p {
+  color: #b0b0b0;
+}
+
+.dark-mode .quote-error p {
+  color: #b0b0b0;
+}

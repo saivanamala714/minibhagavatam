@@ -1,4 +1,5 @@
 import React from 'react';
+import { DarkModeProvider } from './contexts/DarkModeContext';
 import Header from './components/Header';
 import LeftSidebar from './components/LeftSidebar';
 import MainFeed from './components/MainFeed';
@@ -8,15 +9,17 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <div className="app-body">
-        <LeftSidebar />
-        <MainFeed />
+    <DarkModeProvider>
+      <div className="App">
+        <Header />
+        <div className="app-body">
+          <LeftSidebar />
+          <MainFeed />
+        </div>
+        <BackgroundMusic />
+        <KrishnaOverlay />
       </div>
-      <BackgroundMusic />
-      <KrishnaOverlay />
-    </div>
+    </DarkModeProvider>
   );
 }
 
