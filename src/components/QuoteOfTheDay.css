@@ -26,9 +26,11 @@
 
 .quote-title {
   margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-  color: #4a4a4a;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-primary);
+  color: var(--text-primary);
+  line-height: var(--line-height-tight);
 }
 
 .quote-content {
@@ -36,39 +38,44 @@
 }
 
 .sanskrit-quote {
-  font-size: 16px;
+  font-size: var(--font-size-lg);
   font-style: italic;
   color: #8b4513;
   margin-bottom: 16px;
-  line-height: 1.6;
-  font-family: 'Georgia', serif;
+  line-height: var(--line-height-relaxed);
+  font-family: var(--font-family-secondary);
   text-align: center;
-  padding: 12px;
+  padding: 16px;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 8px;
   border-left: 4px solid #ff9800;
+  font-weight: var(--font-weight-medium);
 }
 
 .quote-translation {
-  font-size: 15px;
-  color: #2c2c2c;
-  line-height: 1.5;
-  margin-bottom: 12px;
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: var(--line-height-normal);
+  font-family: var(--font-family-primary);
+  margin-bottom: 16px;
   text-align: justify;
+  font-weight: var(--font-weight-normal);
 }
 
 .quote-reference {
-  font-size: 14px;
-  color: #666;
-  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-primary);
   margin-bottom: 8px;
   text-align: right;
 }
 
 .quote-author {
-  font-size: 13px;
-  color: #888;
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
   font-style: italic;
+  font-family: var(--font-family-primary);
   text-align: right;
 }
 
@@ -188,9 +195,10 @@
 }
 
 .action-text {
-  font-size: 14px;
-  font-weight: 600;
-  color: #5d4037;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-primary);
+  color: var(--text-secondary);
 }
 
 /* Responsive design */
@@ -224,7 +232,7 @@
 }
 
 .dark-mode .quote-title {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .dark-mode .sanskrit-quote {
@@ -234,19 +242,19 @@
 }
 
 .dark-mode .quote-translation {
-  color: #e0e0e0;
+  color: var(--text-secondary);
 }
 
 .dark-mode .quote-reference {
-  color: #b0b0b0;
+  color: var(--text-tertiary);
 }
 
 .dark-mode .quote-author {
-  color: #888;
+  color: var(--text-muted);
 }
 
 .dark-mode .quote-source {
-  color: #666;
+  color: var(--text-muted);
 }
 
 .dark-mode .offline-indicator {
@@ -269,13 +277,13 @@
 }
 
 .dark-mode .action-text {
-  color: #b0b0b0;
+  color: var(--text-secondary);
 }
 
 .dark-mode .quote-loading p {
-  color: #b0b0b0;
+  color: var(--text-secondary);
 }
 
 .dark-mode .quote-error p {
-  color: #b0b0b0;
+  color: var(--text-secondary);
 }

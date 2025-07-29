@@ -132,8 +132,9 @@
 }
 
 .logo-text {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-primary);
   background: linear-gradient(135deg,
     #1e3c72 0%,
     #2a5298 25%,
@@ -144,12 +145,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-family: 'Helvetica', sans-serif;
   text-shadow:
     0 2px 4px rgba(30, 60, 114, 0.2),
     0 0 10px rgba(255, 255, 255, 0.5),
     0 0 20px rgba(0, 191, 255, 0.1);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
   position: relative;
 }

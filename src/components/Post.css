@@ -37,14 +37,17 @@
 
 .post-username {
   margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: #050505;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-primary);
+  color: var(--text-primary);
+  line-height: var(--line-height-tight);
 }
 
 .post-time {
-  font-size: 13px;
-  color: #65676b;
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  font-family: var(--font-family-primary);
 }
 
 .post-options {
@@ -68,10 +71,12 @@
 }
 
 .post-content p {
-  margin: 0 0 12px 0;
-  font-size: 15px;
-  line-height: 1.33;
-  color: #050505;
+  margin: 0 0 16px 0;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  font-family: var(--font-family-primary);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-normal);
 }
 
 .post-image {
@@ -107,20 +112,16 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.dark-mode .post-header {
-  color: #ffffff;
-}
-
-.dark-mode .user-name {
-  color: #ffffff;
+.dark-mode .post-username {
+  color: var(--text-primary);
 }
 
 .dark-mode .post-time {
-  color: #888;
+  color: var(--text-tertiary);
 }
 
-.dark-mode .post-content {
-  color: #e0e0e0;
+.dark-mode .post-content p {
+  color: var(--text-secondary);
 }
 
 .dark-mode .post-image {

@@ -72,9 +72,11 @@
 }
 
 .toggle-label {
-  font-size: 12px;
-  font-weight: 600;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-primary);
   letter-spacing: 0.5px;
+  color: var(--text-secondary);
   transition: color 0.3s ease;
 }
 
