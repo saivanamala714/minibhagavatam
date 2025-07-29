@@ -127,8 +127,10 @@ export const getRandomKrishnaQuote = () => {
   return KRISHNA_QUOTES[randomIndex];
 };
 
-export default {
+const quoteService = {
   fetchQuoteOfTheDay,
   getRandomKrishnaQuote,
   KRISHNA_QUOTES
 };
+
+export default quoteService;

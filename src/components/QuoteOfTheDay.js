@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { fetchQuoteOfTheDay } from '../services/quoteService';
 import './QuoteOfTheDay.css';
 
