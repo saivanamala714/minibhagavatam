@@ -3,43 +3,188 @@
   justify-content: center;
   align-items: center;
   padding: 8px 16px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.95) 100%);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(30, 60, 114, 0.2);
-  box-shadow: 0 2px 12px rgba(30, 60, 114, 0.15);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 248, 255, 0.85) 100%),
+    radial-gradient(circle at 20% 30%, rgba(0, 191, 255, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.12) 0%, transparent 35%),
+    radial-gradient(circle at 50% 20%, rgba(138, 43, 226, 0.08) 0%, transparent 30%),
+    linear-gradient(90deg,
+      rgba(0, 191, 255, 0.05) 0%,
+      rgba(255, 215, 0, 0.05) 25%,
+      rgba(138, 43, 226, 0.05) 50%,
+      rgba(0, 191, 255, 0.05) 75%,
+      rgba(255, 215, 0, 0.05) 100%
+    );
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg,
+    rgba(0, 191, 255, 0.4) 0%,
+    rgba(255, 215, 0, 0.4) 50%,
+    rgba(138, 43, 226, 0.4) 100%
+  ) 1;
+  box-shadow:
+    0 2px 12px rgba(30, 60, 114, 0.15),
+    0 4px 20px rgba(0, 191, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
   height: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Peacock feather pattern overlay */
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(0, 191, 255, 0.03) 20px,
+      rgba(0, 191, 255, 0.03) 22px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 25px,
+      rgba(255, 215, 0, 0.03) 25px,
+      rgba(255, 215, 0, 0.03) 27px
+    );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Peacock eye pattern */
+.header::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle,
+    rgba(138, 43, 226, 0.2) 0%,
+    rgba(0, 191, 255, 0.15) 40%,
+    rgba(255, 215, 0, 0.1) 70%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow:
+    60px 0 0 rgba(0, 191, 255, 0.1),
+    120px 0 0 rgba(255, 215, 0, 0.1),
+    180px 0 0 rgba(138, 43, 226, 0.1),
+    240px 0 0 rgba(0, 191, 255, 0.1),
+    300px 0 0 rgba(255, 215, 0, 0.1),
+    360px 0 0 rgba(138, 43, 226, 0.1),
+    420px 0 0 rgba(0, 191, 255, 0.1),
+    480px 0 0 rgba(255, 215, 0, 0.1),
+    540px 0 0 rgba(138, 43, 226, 0.1),
+    600px 0 0 rgba(0, 191, 255, 0.1),
+    660px 0 0 rgba(255, 215, 0, 0.1),
+    720px 0 0 rgba(138, 43, 226, 0.1);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .logo {
   text-align: center;
+  position: relative;
+  z-index: 10;
 }
 
 .logo-text {
   font-size: 28px;
   font-weight: bold;
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4a90e2 100%);
+  background: linear-gradient(135deg,
+    #1e3c72 0%,
+    #2a5298 25%,
+    #4a90e2 50%,
+    #00bfff 75%,
+    #8a2be2 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-family: 'Helvetica', sans-serif;
-  text-shadow: 0 2px 4px rgba(30, 60, 114, 0.1);
+  text-shadow:
+    0 2px 4px rgba(30, 60, 114, 0.2),
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(0, 191, 255, 0.1);
   letter-spacing: 1px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  position: relative;
+}
+
+/* Subtle glow effect for the title */
+.logo-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg,
+    rgba(0, 191, 255, 0.3) 0%,
+    rgba(255, 215, 0, 0.3) 50%,
+    rgba(138, 43, 226, 0.3) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(1px);
+  z-index: -1;
+  opacity: 0.6;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .header {
     padding: 8px 12px;
+    height: 52px;
+  }
+
+  .header::after {
+    left: 5%;
+    width: 6px;
+    height: 6px;
+    box-shadow:
+      40px 0 0 rgba(0, 191, 255, 0.08),
+      80px 0 0 rgba(255, 215, 0, 0.08),
+      120px 0 0 rgba(138, 43, 226, 0.08),
+      160px 0 0 rgba(0, 191, 255, 0.08),
+      200px 0 0 rgba(255, 215, 0, 0.08),
+      240px 0 0 rgba(138, 43, 226, 0.08),
+      280px 0 0 rgba(0, 191, 255, 0.08),
+      320px 0 0 rgba(255, 215, 0, 0.08);
   }
 
   .logo-text {
     font-size: 24px;
     letter-spacing: 0.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 6px 8px;
+    height: 48px;
+  }
+
+  .header::after {
+    display: none; /* Hide peacock eyes on very small screens */
+  }
+
+  .logo-text {
+    font-size: 22px;
+    letter-spacing: 0.3px;
   }
 }
 
