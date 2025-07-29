@@ -26,14 +26,35 @@
     0 2px 12px rgba(30, 60, 114, 0.15),
     0 4px 20px rgba(0, 191, 255, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 10000;
   height: 56px;
-  position: relative;
   overflow: hidden;
+}
+
+/* Enhanced header when scrolled */
+.header.scrolled {
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 4px 20px rgba(30, 60, 114, 0.25),
+    0 8px 32px rgba(0, 191, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.9) 100%),
+    radial-gradient(circle at 20% 30%, rgba(0, 191, 255, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.15) 0%, transparent 35%),
+    radial-gradient(circle at 50% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 30%),
+    linear-gradient(90deg,
+      rgba(0, 191, 255, 0.08) 0%,
+      rgba(255, 215, 0, 0.08) 25%,
+      rgba(138, 43, 226, 0.08) 50%,
+      rgba(0, 191, 255, 0.08) 75%,
+      rgba(255, 215, 0, 0.08) 100%
+    );
 }
 
 /* Peacock feather pattern overlay */
