@@ -1,31 +1,31 @@
 .main-feed {
-  width: 620px;
-  margin: 0 auto;
+  width: calc(100% - 280px); /* Full width minus left sidebar width */
+  margin-left: 280px; /* Start after the left sidebar */
   padding: 20px;
   min-height: calc(100vh - 56px);
-  position: relative;
-  left: 140px; /* Slight offset to account for left sidebar but keep centered */
+  box-sizing: border-box;
 }
 
 .posts-container {
   margin-top: 16px;
+  max-width: 800px; /* Limit content width for better readability */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Responsive design */
 @media (max-width: 1200px) {
   .main-feed {
-    width: 620px;
-    max-width: calc(100% - 320px);
+    width: calc(100% - 280px);
+    margin-left: 280px;
     padding: 20px 16px;
-    left: 140px;
   }
 }
 
 @media (max-width: 768px) {
   .main-feed {
     width: 100%;
-    max-width: 620px;
-    left: 0;
+    margin-left: 0;
     padding: 20px 8px;
   }
 }
