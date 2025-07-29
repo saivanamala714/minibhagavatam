@@ -23,19 +23,21 @@ const Header = () => {
   };
 
   return (
-    <div className={`header ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="logo">
-        <span className="logo-text">Bhakti Vriksha</span>
-      </div>
-      <div className="header-right">
-        <DarkModeToggle />
-        <button className="popup-button" onClick={togglePopup}>
-          <span className="button-icon">📋</span>
-          <span className="button-text">Menu</span>
-        </button>
+    <>
+      <div className={`header ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="logo">
+          <span className="logo-text">Bhakti Vriksha</span>
+        </div>
+        <div className="header-right">
+          <DarkModeToggle />
+          <button className="popup-button" onClick={togglePopup}>
+            <span className="button-icon">📋</span>
+            <span className="button-text">Menu</span>
+          </button>
+        </div>
       </div>
       {showPopup && <CenterPopup onClose={() => setShowPopup(false)} />}
-    </div>
+    </>
   );
 };
 

@@ -11,12 +11,14 @@
   align-items: center;
   z-index: 10001;
   animation: fadeIn 0.3s ease;
+  margin: 0;
+  padding: 0;
 }
 
 .center-popup {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.9) 100%);
   border-radius: 20px;
-  box-shadow: 
+  box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.25),
     0 0 0 1px rgba(255, 255, 255, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
@@ -27,6 +29,8 @@
   overflow: hidden;
   animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
+  margin: auto;
+  transform: translate(0, 0);
 }
 
 .popup-header {
