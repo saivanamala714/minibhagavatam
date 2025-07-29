@@ -7,6 +7,7 @@ import './Header.css';
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [popupMode, setPopupMode] = useState('events'); // 'events' or 'addEvent'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +21,17 @@ const Header = () => {
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
+    if (!showPopup) {
+      setPopupMode('events'); // Reset to events view when opening
+    }
+  };
+
+  const showAddEventForm = () => {
+    setPopupMode('addEvent');
+  };
+
+  const backToEvents = () => {
+    setPopupMode('events');
   };
 
   return (
@@ -36,7 +48,15 @@ const Header = () => {
           </button>
         </div>
       </div>
-      {showPopup && <SlidingPanel onClose={() => setShowPopup(false)} />}
+      {showPopup && (
+        <SlidingPanel
+          onClose={() => setShowPopup(false)}
+          mode={popupMode}
+          onShowAddEvent={showAddEventForm}
+          onBackToEvents={backToEvents}
+          title={popupMode === 'events' ? 'Upcoming Events' : 'Add New Event'}
+        />
+      )}
     </>
   );
 };
