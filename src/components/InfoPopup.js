@@ -2,36 +2,12 @@ import { useState, useEffect } from 'react';
 import './InfoPopup.css';
 
 const InfoPopup = ({ onClose }) => {
-  const [location, setLocation] = useState('Loading...');
   const [currentTime, setCurrentTime] = useState('');
   const [hostname, setHostname] = useState('');
 
   useEffect(() => {
     // Get hostname
     setHostname(window.location.hostname || 'localhost');
-
-    // Get user's location
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          // Use reverse geocoding API to get location name
-          fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
-            .then(response => response.json())
-            .then(data => {
-              setLocation(`${data.city || data.locality || 'Unknown'}, ${data.countryName || 'Unknown'}`);
-            })
-            .catch(() => {
-              setLocation('Location unavailable');
-            });
-        },
-        () => {
-          setLocation('Location permission denied');
-        }
-      );
-    } else {
-      setLocation('Geolocation not supported');
-    }
 
     // Update time every second
     const updateTime = () => {
@@ -63,14 +39,6 @@ const InfoPopup = ({ onClose }) => {
         </div>
         
         <div className="popup-content">
-          <div className="info-item">
-            <div className="info-icon">📍</div>
-            <div className="info-details">
-              <div className="info-label">Location</div>
-              <div className="info-value">{location}</div>
-            </div>
-          </div>
-
           <div className="info-item">
             <div className="info-icon">🕐</div>
             <div className="info-details">
