@@ -29,13 +29,19 @@ const SlidingPanel = ({ onClose }) => {
               </div>
               <div className="event-info-item">
                 <span className="bullet">•</span>
-                <span className="event-key">Event Timings:</span>
-                <span className="event-value">6pm</span>
-              </div>
-              <div className="event-info-item">
-                <span className="bullet">•</span>
                 <span className="event-key">Event Location:</span>
                 <span className="event-value">706 Arcadia Dr</span>
+              </div>
+            </div>
+
+            <div className="timing-card">
+              <div className="card-header">
+                <div className="card-icon">🕕</div>
+                <div className="card-title">Event Timing</div>
+              </div>
+              <div className="card-content">
+                <div className="timing-display">6pm</div>
+                <div className="timing-subtitle">Today's Session</div>
               </div>
             </div>
           </div>

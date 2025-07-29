@@ -15,8 +15,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 450px;
-  height: 280px;
+  width: 480px;
+  height: 380px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.9) 100%);
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.25),
@@ -137,6 +137,70 @@
   height: 1px;
   background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
   margin: 16px 0;
+}
+
+.timing-card {
+  background: linear-gradient(135deg, rgba(30, 60, 114, 0.1) 0%, rgba(74, 144, 226, 0.08) 100%);
+  border: 1px solid rgba(74, 144, 226, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(30, 60, 114, 0.1);
+  transition: all 0.2s ease;
+}
+
+.timing-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 60, 114, 0.15);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.card-icon {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4a90e2 0%, #1e3c72 100%);
+  border-radius: 50%;
+  color: white;
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+}
+
+.card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-primary);
+  color: var(--text-primary);
+}
+
+.card-content {
+  text-align: center;
+}
+
+.timing-display {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-primary);
+  color: #1e3c72;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 4px rgba(30, 60, 114, 0.2);
+}
+
+.timing-subtitle {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family-primary);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .menu-item {
@@ -274,6 +338,26 @@
   background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
 }
 
+.dark-mode .timing-card {
+  background: linear-gradient(135deg, rgba(0, 191, 255, 0.15) 0%, rgba(138, 43, 226, 0.1) 100%);
+  border: 1px solid rgba(0, 191, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .timing-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .card-icon {
+  background: linear-gradient(135deg, #00bfff 0%, #4a90e2 100%);
+  box-shadow: 0 2px 8px rgba(0, 191, 255, 0.4);
+}
+
+.dark-mode .timing-display {
+  color: #00bfff;
+  text-shadow: 0 2px 4px rgba(0, 191, 255, 0.3);
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -298,8 +382,8 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .sliding-panel {
-    width: 380px;
-    height: 250px;
+    width: 420px;
+    height: 340px;
   }
 
   .panel-header {
@@ -322,12 +406,27 @@
   .event-value {
     font-size: var(--font-size-xs);
   }
+
+  .timing-card {
+    padding: 16px;
+    margin-top: 16px;
+  }
+
+  .card-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  .timing-display {
+    font-size: var(--font-size-3xl);
+  }
 }
 
 @media (max-width: 480px) {
   .sliding-panel {
     width: 90%;
-    height: 220px;
+    height: 300px;
     transform: translate(-50%, -50%);
   }
 
@@ -354,5 +453,33 @@
 
   .event-info-item {
     gap: 6px;
+  }
+
+  .timing-card {
+    padding: 14px;
+    margin-top: 14px;
+  }
+
+  .card-header {
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .card-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .card-title {
+    font-size: var(--font-size-base);
+  }
+
+  .timing-display {
+    font-size: var(--font-size-2xl);
+  }
+
+  .timing-subtitle {
+    font-size: var(--font-size-xs);
   }
 }
