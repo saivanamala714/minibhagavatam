@@ -15,8 +15,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
-  height: 400px;
+  width: 450px;
+  height: 280px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.9) 100%);
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.25),
@@ -74,14 +74,15 @@
 }
 
 .panel-content {
-  padding: 16px 28px;
+  padding: 20px 28px;
   flex: 1;
-  overflow-y: auto;
-  max-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .event-info-section {
-  margin-bottom: 20px;
+  width: 100%;
 }
 
 .event-info-title {
@@ -297,8 +298,8 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .sliding-panel {
-    width: 420px;
-    height: 380px;
+    width: 380px;
+    height: 250px;
   }
 
   .panel-header {
@@ -306,22 +307,11 @@
   }
 
   .panel-content {
-    padding: 12px 24px;
-    max-height: 250px;
+    padding: 16px 24px;
   }
 
   .panel-footer {
     padding: 16px 24px;
-  }
-
-  .menu-item {
-    padding: 10px 0;
-  }
-
-  .menu-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
   }
 
   .event-key {
@@ -337,7 +327,7 @@
 @media (max-width: 480px) {
   .sliding-panel {
     width: 90%;
-    height: 350px;
+    height: 220px;
     transform: translate(-50%, -50%);
   }
 
@@ -345,27 +335,8 @@
     font-size: var(--font-size-lg);
   }
 
-  .menu-label {
-    font-size: var(--font-size-sm);
-  }
-
-  .menu-description {
-    font-size: var(--font-size-xs);
-  }
-
   .panel-content {
-    max-height: 210px;
-    padding: 10px 20px;
-  }
-
-  .menu-item {
-    padding: 8px 0;
-  }
-
-  .menu-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 16px;
+    padding: 12px 20px;
   }
 
   .event-info-title {
