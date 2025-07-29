@@ -1,0 +1,331 @@
+.krishna-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none; /* Allows user interaction through the overlay */
+  animation: krishnaFadeIn 1s ease-in-out forwards, krishnaFadeOut 1s ease-in-out 4s forwards;
+}
+
+.krishna-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(30, 60, 114, 0.15) 0%,
+    rgba(74, 144, 226, 0.1) 30%,
+    rgba(0, 191, 255, 0.08) 60%,
+    transparent 100%
+  );
+  overflow: hidden;
+}
+
+/* Gradient overlays for divine effect */
+.krishna-gradient-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 215, 0, 0.1) 0%,
+    rgba(255, 215, 0, 0.05) 50%,
+    transparent 100%
+  );
+}
+
+.krishna-gradient-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(
+    0deg,
+    rgba(138, 43, 226, 0.1) 0%,
+    rgba(138, 43, 226, 0.05) 50%,
+    transparent 100%
+  );
+}
+
+.krishna-gradient-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 25%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 191, 255, 0.08) 0%,
+    rgba(0, 191, 255, 0.04) 50%,
+    transparent 100%
+  );
+}
+
+.krishna-gradient-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 25%;
+  background: linear-gradient(
+    270deg,
+    rgba(0, 191, 255, 0.08) 0%,
+    rgba(0, 191, 255, 0.04) 50%,
+    transparent 100%
+  );
+}
+
+.krishna-image-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: krishnaFloat 3s ease-in-out infinite;
+}
+
+.krishna-image {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
+  opacity: 0.25;
+  filter: 
+    brightness(1.2) 
+    contrast(1.1) 
+    saturate(1.3)
+    drop-shadow(0 0 30px rgba(255, 215, 0, 0.3))
+    drop-shadow(0 0 60px rgba(0, 191, 255, 0.2));
+  animation: krishnaGlow 2s ease-in-out infinite alternate;
+}
+
+.krishna-glow {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 215, 0, 0.2) 0%,
+    rgba(0, 191, 255, 0.15) 40%,
+    rgba(138, 43, 226, 0.1) 70%,
+    transparent 100%
+  );
+  border-radius: 30px;
+  animation: krishnaDivineGlow 3s ease-in-out infinite;
+}
+
+.krishna-blessing-text {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  animation: krishnaTextFloat 2s ease-in-out infinite alternate;
+}
+
+.sanskrit-blessing {
+  font-size: 24px;
+  font-weight: 600;
+  color: rgba(255, 215, 0, 0.8);
+  text-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.5),
+    0 0 20px rgba(255, 215, 0, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 12px;
+  font-family: 'Georgia', serif;
+  letter-spacing: 1px;
+}
+
+.english-blessing {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0, 191, 255, 0.7);
+  text-shadow: 
+    0 0 8px rgba(0, 191, 255, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* Divine particles animation */
+.divine-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+.particle-1 {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  top: 30%;
+  right: 20%;
+  animation-delay: 0.5s;
+  background: radial-gradient(circle, rgba(0, 191, 255, 0.8) 0%, transparent 70%);
+}
+
+.particle-3 {
+  top: 60%;
+  left: 10%;
+  animation-delay: 1s;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.8) 0%, transparent 70%);
+}
+
+.particle-4 {
+  top: 70%;
+  right: 15%;
+  animation-delay: 1.5s;
+}
+
+.particle-5 {
+  top: 40%;
+  left: 80%;
+  animation-delay: 2s;
+  background: radial-gradient(circle, rgba(0, 191, 255, 0.8) 0%, transparent 70%);
+}
+
+.particle-6 {
+  top: 80%;
+  left: 50%;
+  animation-delay: 2.5s;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.8) 0%, transparent 70%);
+}
+
+/* Animations */
+@keyframes krishnaFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes krishnaFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes krishnaFloat {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-10px);
+  }
+}
+
+@keyframes krishnaGlow {
+  from {
+    filter: 
+      brightness(1.2) 
+      contrast(1.1) 
+      saturate(1.3)
+      drop-shadow(0 0 30px rgba(255, 215, 0, 0.3))
+      drop-shadow(0 0 60px rgba(0, 191, 255, 0.2));
+  }
+  to {
+    filter: 
+      brightness(1.3) 
+      contrast(1.2) 
+      saturate(1.4)
+      drop-shadow(0 0 40px rgba(255, 215, 0, 0.4))
+      drop-shadow(0 0 80px rgba(0, 191, 255, 0.3));
+  }
+}
+
+@keyframes krishnaDivineGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes krishnaTextFloat {
+  from {
+    transform: translateX(-50%) translateY(0px);
+  }
+  to {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .krishna-image {
+    width: 250px;
+    height: 320px;
+  }
+  
+  .sanskrit-blessing {
+    font-size: 20px;
+  }
+  
+  .english-blessing {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .krishna-image {
+    width: 200px;
+    height: 260px;
+  }
+  
+  .sanskrit-blessing {
+    font-size: 18px;
+  }
+  
+  .english-blessing {
+    font-size: 13px;
+  }
+  
+  .particle {
+    width: 3px;
+    height: 3px;
+  }
+}

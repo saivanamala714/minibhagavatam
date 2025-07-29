@@ -130,9 +130,9 @@ const QuoteOfTheDay = () => {
           <span className="action-icon">🔄</span>
           <span className="action-text">New Quote</span>
         </div>
-        <div className="quote-action">
-          <span className="action-icon">🙏</span>
-          <span className="action-text">Reflect</span>
+        <div className="quote-action" onClick={() => window.showKrishnaBlessing && window.showKrishnaBlessing()}>
+          <span className="action-icon">🕉️</span>
+          <span className="action-text">Krishna Blessing</span>
         </div>
         <div className="quote-action">
           <span className="action-icon">💫</span>
