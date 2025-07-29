@@ -47,12 +47,12 @@ const SlidingPanel = ({ onClose }) => {
                     {expandedCards.card1 ? '▼' : '▶'}
                   </div>
                 </div>
+                <div className="event-title-section">
+                  <h5 className="event-title">Bhakti Vriksha Canto 1 Session</h5>
+                  <span className="event-host">by Ramya</span>
+                </div>
                 {expandedCards.card1 && (
                   <div className="event-details">
-                    <div className="detail-item">
-                      <span className="detail-label">Host:</span>
-                      <span className="detail-value">Ramya</span>
-                    </div>
                     <div className="detail-item">
                       <span className="detail-label">Timing:</span>
                       <span className="detail-value">6:00 PM</span>
@@ -77,12 +77,12 @@ const SlidingPanel = ({ onClose }) => {
                     {expandedCards.card2 ? '▼' : '▶'}
                   </div>
                 </div>
+                <div className="event-title-section">
+                  <h5 className="event-title">Special Kirtan Evening</h5>
+                  <span className="event-host">by Krishna Das</span>
+                </div>
                 {expandedCards.card2 && (
                   <div className="event-details">
-                    <div className="detail-item">
-                      <span className="detail-label">Host:</span>
-                      <span className="detail-value">Krishna Das</span>
-                    </div>
                     <div className="detail-item">
                       <span className="detail-label">Timing:</span>
                       <span className="detail-value">7:00 PM</span>
@@ -107,12 +107,12 @@ const SlidingPanel = ({ onClose }) => {
                     {expandedCards.card3 ? '▼' : '▶'}
                   </div>
                 </div>
+                <div className="event-title-section">
+                  <h5 className="event-title">Year-End Celebration</h5>
+                  <span className="event-host">by Priya Sharma</span>
+                </div>
                 {expandedCards.card3 && (
                   <div className="event-details">
-                    <div className="detail-item">
-                      <span className="detail-label">Host:</span>
-                      <span className="detail-value">Priya Sharma</span>
-                    </div>
                     <div className="detail-item">
                       <span className="detail-label">Timing:</span>
                       <span className="detail-value">5:30 PM</span>
@@ -137,12 +137,12 @@ const SlidingPanel = ({ onClose }) => {
                     {expandedCards.card4 ? '▼' : '▶'}
                   </div>
                 </div>
+                <div className="event-title-section">
+                  <h5 className="event-title">New Year Spiritual Gathering</h5>
+                  <span className="event-host">by Govind Patel</span>
+                </div>
                 {expandedCards.card4 && (
                   <div className="event-details">
-                    <div className="detail-item">
-                      <span className="detail-label">Host:</span>
-                      <span className="detail-value">Govind Patel</span>
-                    </div>
                     <div className="detail-item">
                       <span className="detail-label">Timing:</span>
                       <span className="detail-value">6:30 PM</span>
@@ -167,12 +167,12 @@ const SlidingPanel = ({ onClose }) => {
                     {expandedCards.card5 ? '▼' : '▶'}
                   </div>
                 </div>
+                <div className="event-title-section">
+                  <h5 className="event-title">Bhakti Principles Workshop</h5>
+                  <span className="event-host">by Radha Devi</span>
+                </div>
                 {expandedCards.card5 && (
                   <div className="event-details">
-                    <div className="detail-item">
-                      <span className="detail-label">Host:</span>
-                      <span className="detail-value">Radha Devi</span>
-                    </div>
                     <div className="detail-item">
                       <span className="detail-label">Timing:</span>
                       <span className="detail-value">4:00 PM</span>
