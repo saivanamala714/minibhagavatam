@@ -639,6 +639,70 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
+/* Inline Add Event Form */
+.add-event-inline {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-event-inline .form-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, rgba(38, 222, 129, 0.1) 0%, rgba(32, 191, 107, 0.05) 100%);
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family-primary);
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text-primary);
+}
+
+.back-icon {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.add-event-inline .form-title {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.add-event-inline .event-form {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.dark-mode .add-event-inline .form-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(38, 222, 129, 0.15) 0%, rgba(32, 191, 107, 0.1) 100%);
+}
+
+.dark-mode .back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {

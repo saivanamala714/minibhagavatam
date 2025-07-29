@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './SlidingPanel.css';
 
-const SlidingPanel = ({ onClose }) => {
+const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents }) => {
   const [expandedCards, setExpandedCards] = useState({
     card1: true,
     card2: false,
@@ -58,7 +58,7 @@ const SlidingPanel = ({ onClose }) => {
     }
   ]);
 
-  const [showAddForm, setShowAddForm] = useState(false);
+
 
   // Close panel when clicking outside
   const handleOverlayClick = (e) => {
@@ -86,7 +86,7 @@ const SlidingPanel = ({ onClose }) => {
       ...prev,
       [newEventId]: true
     }));
-    setShowAddForm(false);
+    onBackToEvents();
   };
 
   return (
@@ -100,56 +100,57 @@ const SlidingPanel = ({ onClose }) => {
         </div>
         
         <div className="panel-content">
-          <div className="events-section">
-            <h4 className="events-title">Upcoming Events</h4>
+          {mode === 'events' ? (
+            <div className="events-section">
+              <h4 className="events-title">Upcoming Events</h4>
 
-            <div className="events-list">
-              {events.map((event) => (
-                <div key={event.id} className="event-card">
-                  <div className="event-date-header" onClick={() => toggleCard(event.id)}>
-                    <div className="date-icon">📅</div>
-                    <div className="date-text">{event.date}</div>
-                    <div className="collapse-button">
-                      {expandedCards[event.id] ? '▼' : '▶'}
-                    </div>
-                  </div>
-                  <div className="event-title-section">
-                    <h5 className="event-title">{event.title}</h5>
-                    <span className="event-host">by {event.host}</span>
-                  </div>
-                  {expandedCards[event.id] && (
-                    <div className="event-details">
-                      <div className="detail-item">
-                        <span className="detail-label">Timing:</span>
-                        <span className="detail-value">{event.timing}</span>
-                      </div>
-                      <div className="detail-item">
-                        <span className="detail-label">Address:</span>
-                        <span className="detail-value">{event.address}</span>
-                      </div>
-                      <div className="detail-item description">
-                        <span className="detail-label">Description:</span>
-                        <span className="detail-value">{event.description}</span>
+              <div className="events-list">
+                {events.map((event) => (
+                  <div key={event.id} className="event-card">
+                    <div className="event-date-header" onClick={() => toggleCard(event.id)}>
+                      <div className="date-icon">📅</div>
+                      <div className="date-text">{event.date}</div>
+                      <div className="collapse-button">
+                        {expandedCards[event.id] ? '▼' : '▶'}
                       </div>
                     </div>
-                  )}
+                    <div className="event-title-section">
+                      <h5 className="event-title">{event.title}</h5>
+                      <span className="event-host">by {event.host}</span>
+                    </div>
+                    {expandedCards[event.id] && (
+                      <div className="event-details">
+                        <div className="detail-item">
+                          <span className="detail-label">Timing:</span>
+                          <span className="detail-value">{event.timing}</span>
+                        </div>
+                        <div className="detail-item">
+                          <span className="detail-label">Address:</span>
+                          <span className="detail-value">{event.address}</span>
+                        </div>
+                        <div className="detail-item description">
+                          <span className="detail-label">Description:</span>
+                          <span className="detail-value">{event.description}</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+
+                <div className="add-event-section">
+                  <button
+                    className="add-event-button"
+                    onClick={onShowAddEvent}
+                  >
+                    <span className="add-icon">➕</span>
+                    <span className="add-text">Add New Event</span>
+                  </button>
                 </div>
-              ))}
-
-
-              <div className="add-event-section">
-                <button
-                  className="add-event-button"
-                  onClick={() => setShowAddForm(true)}
-                >
-                  <span className="add-icon">➕</span>
-                  <span className="add-text">Add New Event</span>
-                </button>
               </div>
             </div>
-
-            {showAddForm && <AddEventForm onAdd={addNewEvent} onCancel={() => setShowAddForm(false)} />}
-          </div>
+          ) : (
+            <AddEventForm onAdd={addNewEvent} onCancel={onBackToEvents} />
+          )}
         </div>
 
         <div className="panel-footer">
@@ -195,12 +196,14 @@ const AddEventForm = ({ onAdd, onCancel }) => {
   };
 
   return (
-    <div className="add-event-overlay" onClick={(e) => e.target.classList.contains('add-event-overlay') && onCancel()}>
-      <div className="add-event-form">
-        <div className="form-header">
-          <h4 className="form-title">Add New Event</h4>
-          <button className="form-close-button" onClick={onCancel}>✕</button>
-        </div>
+    <div className="add-event-inline">
+      <div className="form-header">
+        <button className="back-button" onClick={onCancel}>
+          <span className="back-icon">←</span>
+          <span className="back-text">Back to Events</span>
+        </button>
+        <h4 className="form-title">Add New Event</h4>
+      </div>
 
         <form onSubmit={handleSubmit} className="event-form">
           <div className="form-group">
@@ -287,7 +290,6 @@ const AddEventForm = ({ onAdd, onCancel }) => {
             </button>
           </div>
         </form>
-      </div>
     </div>
   );
 };
