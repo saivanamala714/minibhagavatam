@@ -89,6 +89,17 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
     onBackToEvents();
   };
 
+  const deleteEvent = (eventId) => {
+    if (window.confirm('Are you sure you want to delete this event?')) {
+      setEvents(prev => prev.filter(event => event.id !== eventId));
+      setExpandedCards(prev => {
+        const newExpandedCards = { ...prev };
+        delete newExpandedCards[eventId];
+        return newExpandedCards;
+      });
+    }
+  };
+
   return (
     <div className="panel-overlay" onClick={handleOverlayClick}>
       <div className="sliding-panel">
@@ -109,8 +120,20 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
                       </div>
                     </div>
                     <div className="event-title-section">
-                      <h5 className="event-title">{event.title}</h5>
-                      <span className="event-host">by {event.host}</span>
+                      <div className="title-content">
+                        <h5 className="event-title">{event.title}</h5>
+                        <span className="event-host">by {event.host}</span>
+                      </div>
+                      <button
+                        className="delete-button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          deleteEvent(event.id);
+                        }}
+                        title="Delete Event"
+                      >
+                        🗑️
+                      </button>
                     </div>
                     {expandedCards[event.id] && (
                       <div className="event-details">
