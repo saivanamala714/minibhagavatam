@@ -145,6 +145,13 @@
   padding: 12px 20px;
   background: rgba(248, 249, 250, 0.8);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-content {
+  flex: 1;
 }
 
 .event-title {
@@ -162,6 +169,30 @@
   font-family: var(--font-family-primary);
   color: var(--text-tertiary);
   font-style: italic;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  color: var(--text-tertiary);
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.delete-button:hover {
+  background: rgba(255, 0, 0, 0.1);
+  color: #ff4757;
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .event-details {
@@ -353,6 +384,11 @@
 .dark-mode .event-title-section {
   background: rgba(22, 33, 62, 0.6);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .delete-button:hover {
+  background: rgba(255, 71, 87, 0.2);
+  color: #ff6b7a;
 }
 
 /* Add Event Button */
@@ -589,9 +625,21 @@
   box-shadow: 0 4px 12px rgba(38, 222, 129, 0.3);
 }
 
-.submit-button:hover {
+.submit-button:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(38, 222, 129, 0.4);
+}
+
+.submit-button:disabled,
+.cancel-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.submit-button:disabled {
+  background: linear-gradient(135deg, #a0a0a0 0%, #808080 100%);
+  box-shadow: none;
 }
 
 /* Dark Mode Form Styles */
@@ -782,6 +830,13 @@
     font-size: var(--font-size-xs);
   }
 
+  .delete-button {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    padding: 6px;
+  }
+
   .event-details {
     padding: 16px;
     gap: 10px;
@@ -863,6 +918,13 @@
 
   .event-host {
     font-size: var(--font-size-xs);
+  }
+
+  .delete-button {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    padding: 4px;
   }
 
   .event-details {
