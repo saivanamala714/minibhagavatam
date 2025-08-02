@@ -74,19 +74,59 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
     }));
   };
 
-  const addNewEvent = (eventData) => {
-    const newEventId = `card${events.length + 1}`;
-    const newEvent = {
-      id: newEventId,
-      ...eventData
-    };
+  const addNewEvent = async (eventData) => {
+    try {
+      const newEventId = `deployed-event-${Date.now()}`;
 
-    setEvents(prev => [...prev, newEvent]);
-    setExpandedCards(prev => ({
-      ...prev,
-      [newEventId]: true
-    }));
-    onBackToEvents();
+      // Prepare API payload matching the required format
+      const apiPayload = {
+        id: newEventId,
+        date: eventData.dateRaw || eventData.date,
+        details: JSON.stringify({
+          title: eventData.title,
+          host: eventData.host,
+          timing: eventData.timing,
+          address: eventData.address,
+          description: eventData.description
+        })
+      };
+
+      // Make API call to save event
+      const response = await fetch('https://api-ezqtprfi3a-uc.a.run.app/api/event/saveEvent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(apiPayload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('Event saved successfully:', result);
+
+      // Create new event for local state
+      const newEvent = {
+        id: newEventId,
+        ...eventData
+      };
+
+      setEvents(prev => [...prev, newEvent]);
+      setExpandedCards(prev => ({
+        ...prev,
+        [newEventId]: true
+      }));
+      onBackToEvents();
+
+      // Show success message
+      alert('Event saved successfully!');
+
+    } catch (error) {
+      console.error('Error saving event:', error);
+      alert('Failed to save event. Please try again.');
+    }
   };
 
   const deleteEvent = (eventId) => {
@@ -202,10 +242,10 @@ const AddEventForm = ({ onAdd, onCancel }) => {
     description: ''
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.date && formData.title && formData.host) {
-      onAdd(formData);
+      await onAdd(formData);
       setFormData({
         date: getTodayFormatted(),
         dateRaw: getTodayDate(),
