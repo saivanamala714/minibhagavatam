@@ -28,7 +28,12 @@ const Chatbot = ({ onClose }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://bhagavad-gita-qa-669294246288.us-central1.run.app/ask', {
+      const isLocalDevelopment = process.env.NODE_ENV === 'development';
+      const apiUrl = isLocalDevelopment 
+        ? 'http://localhost:8888/.netlify/functions/ask-gita' 
+        : '/.netlify/functions/ask-gita';
+      
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,8 +57,8 @@ const Chatbot = ({ onClose }) => {
     <div className="chatbot-container">
       <div className="chatbot-header">
         <h3>Bhagavad Gita Assistant</h3>
-        <button className="close-button" onClick={onClose}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <button className="close-button" onClick={onClose} aria-label="Close chat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
