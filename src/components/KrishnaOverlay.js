@@ -5,28 +5,8 @@ const KrishnaOverlay = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(false);
 
-  useEffect(() => {
-    // Show Krishna overlay after a short delay when component mounts
-    const showTimer = setTimeout(() => {
-      if (!hasShown) {
-        setIsVisible(true);
-        setHasShown(true);
-      }
-    }, 2000); // Show after 2 seconds of page load
-
-    return () => clearTimeout(showTimer);
-  }, [hasShown]);
-
-  useEffect(() => {
-    if (isVisible) {
-      // Hide after 5 seconds
-      const hideTimer = setTimeout(() => {
-        setIsVisible(false);
-      }, 5000);
-
-      return () => clearTimeout(hideTimer);
-    }
-  }, [isVisible]);
+  // Remove auto-show functionality
+  // The overlay will now only show when explicitly triggered
 
   // Function to trigger Krishna overlay manually (can be called from other components)
   const showKrishnaBlessing = () => {

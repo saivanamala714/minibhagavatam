@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[dev]
+  framework = "create-react-app"
+  targetPort = 3000  # Port for the React app (matches React's default)
+  port = 8888        # Port for Netlify Dev server
+  publish = "build"
+  functions = "netlify/functions"
+  command = "npm start"  # Explicitly use npm start to run the React app
