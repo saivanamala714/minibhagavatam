@@ -5,6 +5,7 @@ import LeftSidebar from './components/LeftSidebar';
 import MainFeed from './components/MainFeed';
 import BackgroundMusic from './components/BackgroundMusic';
 import KrishnaOverlay from './components/KrishnaOverlay';
+import ChatButton from './components/ChatButton';
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         </div>
         <BackgroundMusic />
         <KrishnaOverlay />
+        <ChatButton />
       </div>
     </DarkModeProvider>
   );
