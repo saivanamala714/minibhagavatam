@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './SlidingPanel.css';
 
 const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents, title = 'Upcoming Events' }) => {
@@ -10,55 +10,95 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
     card5: false
   });
 
-  const [events, setEvents] = useState([
-    {
-      id: 'card1',
-      date: 'December 15, 2024',
-      title: 'Bhakti Vriksha Canto 1 Session',
-      host: 'Ramya',
-      timing: '6:00 PM',
-      address: '706 Arcadia Dr',
-      description: 'Bhakti Vriksha session exploring Canto 1 with devotional discussions and community fellowship.'
-    },
-    {
-      id: 'card2',
-      date: 'December 22, 2024',
-      title: 'Special Kirtan Evening',
-      host: 'Krishna Das',
-      timing: '7:00 PM',
-      address: '123 Temple Street',
-      description: 'Special Kirtan evening with traditional devotional songs and spiritual discourse on Bhagavatam teachings.'
-    },
-    {
-      id: 'card3',
-      date: 'December 29, 2024',
-      title: 'Year-End Celebration',
-      host: 'Priya Sharma',
-      timing: '5:30 PM',
-      address: '456 Lotus Avenue',
-      description: 'Year-end celebration with Bhagavatam recitation, prasadam sharing, and community bonding activities.'
-    },
-    {
-      id: 'card4',
-      date: 'January 5, 2025',
-      title: 'New Year Spiritual Gathering',
-      host: 'Govind Patel',
-      timing: '6:30 PM',
-      address: '789 Vrindavan Circle',
-      description: 'New Year spiritual gathering focusing on Canto 2 with meditation and philosophical discussions.'
-    },
-    {
-      id: 'card5',
-      date: 'January 12, 2025',
-      title: 'Bhakti Principles Workshop',
-      host: 'Radha Devi',
-      timing: '4:00 PM',
-      address: '321 Gokul Gardens',
-      description: 'Interactive workshop on Bhakti principles with practical applications in daily life and spiritual growth.'
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Fetch events from API
+  const fetchEvents = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('https://api-ezqtprfi3a-uc.a.run.app/api/events', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+      
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('Events fetched successfully:', result);
+      console.log('Result type:', typeof result, 'Is array:', Array.isArray(result));
+
+      // Check if result is an array or has an events property
+      let eventsArray = [];
+      if (Array.isArray(result)) {
+        eventsArray = result;
+      } else if (result && Array.isArray(result.events)) {
+        eventsArray = result.events;
+      } else if (result && Array.isArray(result.data)) {
+        eventsArray = result.data;
+      } else {
+        console.warn('Unexpected API response structure:', result);
+        eventsArray = [];
+      }
+
+      // Transform API response to match our event structure
+      const transformedEvents = eventsArray.map(event => {
+        let eventDetails = {};
+        try {
+          eventDetails = JSON.parse(event.details);
+        } catch (e) {
+          console.error('Error parsing event details:', e);
+          eventDetails = {
+            title: 'Event',
+            host: 'Unknown',
+            timing: '',
+            address: '',
+            description: ''
+          };
+        }
+
+        return {
+          id: event.id,
+          date: event.date,
+          title: eventDetails.title,
+          host: eventDetails.host,
+          timing: eventDetails.timing,
+          address: eventDetails.address,
+          description: eventDetails.description
+        };
+      });
+
+      setEvents(transformedEvents);
+
+      // Set expanded state for all events (first one expanded by default)
+      const expandedState = {};
+      if (transformedEvents.length > 0) {
+        transformedEvents.forEach((event, index) => {
+          expandedState[event.id] = index === 0;
+        });
+      }
+      setExpandedCards(expandedState);
+
+    } catch (error) {
+      console.error('Error fetching events:', error);
+      setError('Failed to load events. Please try again.');
+    } finally {
+      setLoading(false);
     }
-  ]);
+  };
 
-
+  // Fetch events when component mounts
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
   // Close panel when clicking outside
   const handleOverlayClick = (e) => {
@@ -107,17 +147,8 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
       const result = await response.json();
       console.log('Event saved successfully:', result);
 
-      // Create new event for local state
-      const newEvent = {
-        id: newEventId,
-        ...eventData
-      };
-
-      setEvents(prev => [...prev, newEvent]);
-      setExpandedCards(prev => ({
-        ...prev,
-        [newEventId]: true
-      }));
+      // Refresh events from server to get the latest data
+      await fetchEvents();
       onBackToEvents();
 
       // Show success message
@@ -129,14 +160,33 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
     }
   };
 
-  const deleteEvent = (eventId) => {
+  const deleteEvent = async (eventId) => {
     if (window.confirm('Are you sure you want to delete this event?')) {
-      setEvents(prev => prev.filter(event => event.id !== eventId));
-      setExpandedCards(prev => {
-        const newExpandedCards = { ...prev };
-        delete newExpandedCards[eventId];
-        return newExpandedCards;
-      });
+      try {
+        const response = await fetch(`https://api-ezqtprfi3a-uc.a.run.app/api/event/deleteEvent/${eventId}`, {
+          method: 'DELETE',
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to delete event: ${response.status}`);
+        }
+
+        // Update local state after successful API call
+        setEvents(prev => prev.filter(event => event.id !== eventId));
+        setExpandedCards(prev => {
+          const newExpandedCards = { ...prev };
+          delete newExpandedCards[eventId];
+          return newExpandedCards;
+        });
+
+        // Refresh events from server to get the latest data
+        await fetchEvents();
+
+        alert('Event deleted successfully!');
+      } catch (error) {
+        console.error('Error deleting event:', error);
+        alert('Failed to delete event. Please try again.');
+      }
     }
   };
 
@@ -145,13 +195,29 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
       <div className="sliding-panel">
         <div className="panel-header">
           <h3 className="panel-title">{title}</h3>
+          <button className="close-button" onClick={onClose}>
+            <span className="close-icon">✕</span>
+          </button>
         </div>
         
         <div className="panel-content">
           {mode === 'events' ? (
             <div className="events-section">
-              <div className="events-list">
-                {events.map((event) => (
+              {loading ? (
+                <div className="loading-section">
+                  <div className="loading-spinner">🔄</div>
+                  <p>Loading events...</p>
+                </div>
+              ) : error ? (
+                <div className="error-section">
+                  <p>{error}</p>
+                  <button onClick={fetchEvents} className="retry-button">
+                    Try Again
+                  </button>
+                </div>
+              ) : (
+                <div className="events-list">
+                  {events.map((event) => (
                   <div key={event.id} className="event-card">
                     <div className="event-date-header" onClick={() => toggleCard(event.id)}>
                       <div className="date-text">{event.date}</div>
@@ -194,16 +260,17 @@ const SlidingPanel = ({ onClose, mode = 'events', onShowAddEvent, onBackToEvents
                   </div>
                 ))}
 
-                <div className="add-event-section">
-                  <button
-                    className="add-event-button"
-                    onClick={onShowAddEvent}
-                  >
-                    <span className="add-icon">➕</span>
-                    <span className="add-text">Add New Event</span>
-                  </button>
+                  <div className="add-event-section">
+                    <button
+                      className="add-event-button"
+                      onClick={onShowAddEvent}
+                    >
+                      <span className="add-icon">➕</span>
+                      <span className="add-text">Add New Event</span>
+                    </button>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ) : (
             <AddEventForm onAdd={addNewEvent} onCancel={onBackToEvents} />
@@ -238,6 +305,7 @@ const AddEventForm = ({ onAdd, onCancel }) => {
     title: '',
     host: '',
     timing: '',
+    timingRaw: '',
     address: '',
     description: ''
   });
@@ -252,6 +320,7 @@ const AddEventForm = ({ onAdd, onCancel }) => {
         title: '',
         host: '',
         timing: '',
+        timingRaw: '',
         address: '',
         description: ''
       });
@@ -273,10 +342,18 @@ const AddEventForm = ({ onAdd, onCancel }) => {
       processedValue = dateObj.toLocaleDateString('en-US', options);
     }
 
+    // Format time for display in event cards
+    if (name === 'timing' && value) {
+      const [hours, minutes] = value.split(':');
+      const hour12 = parseInt(hours) % 12 || 12;
+      const ampm = parseInt(hours) >= 12 ? 'PM' : 'AM';
+      processedValue = `${hour12}:${minutes} ${ampm}`;
+    }
+
     setFormData(prev => ({
       ...prev,
-      [name]: name === 'date' ? processedValue : value,
-      [`${name}Raw`]: name === 'date' ? value : undefined
+      [name]: (name === 'date' || name === 'timing') ? processedValue : value,
+      [`${name}Raw`]: (name === 'date' || name === 'timing') ? value : undefined
     }));
   };
 
@@ -333,14 +410,16 @@ const AddEventForm = ({ onAdd, onCancel }) => {
 
           <div className="form-group">
             <label className="form-label">Timing</label>
-            <input
-              type="text"
-              name="timing"
-              value={formData.timing}
-              onChange={handleChange}
-              placeholder="e.g., 7:00 PM"
-              className="form-input"
-            />
+            <div className="timing-input-wrapper">
+              <input
+                type="time"
+                name="timing"
+                value={formData.timingRaw || ''}
+                onChange={handleChange}
+                className="form-input timing-input"
+              />
+              <span className="timing-icon">🕐</span>
+            </div>
           </div>
 
           <div className="form-group">
