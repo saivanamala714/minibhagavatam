@@ -3,7 +3,7 @@ import './KrishnaOverlay.css';
 
 const KrishnaOverlay = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
+
 
   // Remove auto-show functionality
   // The overlay will now only show when explicitly triggered
