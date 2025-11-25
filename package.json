@@ -23,6 +23,9 @@
     "test": "react-scripts test",
     "test:function": "node test-function-direct.js",
     "test:all": "npm test && npm run test:function",
+    "deploy": "npm run build && firebase deploy --only hosting",
+    "deploy:functions": "npm run build && firebase deploy --only functions",
+    "deploy:all": "npm run build && firebase deploy",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
