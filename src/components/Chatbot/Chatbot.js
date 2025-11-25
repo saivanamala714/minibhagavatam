@@ -28,10 +28,7 @@ const Chatbot = ({ onClose }) => {
     setIsLoading(true);
 
     try {
-      const isLocalDevelopment = process.env.NODE_ENV === 'development';
-      const apiUrl = isLocalDevelopment 
-        ? 'http://localhost:8888/.netlify/functions/ask-gita' 
-        : '/.netlify/functions/ask-gita';
+      const apiUrl = '/askGita';
       
       const response = await fetch(apiUrl, {
         method: 'POST',
