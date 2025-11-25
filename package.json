@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "netlify-cli": "^15.0.0",
-    "rimraf": "^5.0.0"
+    "rimraf": "^3.0.2"
   },
   "eslintConfig": {
     "extends": [
