@@ -44,6 +44,13 @@
   transform: rotate(90deg);
 }
 
+/* Hide chat button on mobile when chatbot is open to prevent overlap with send button */
+@media (max-width: 767px) {
+  .chat-button.active {
+    display: none;
+  }
+}
+
 .chatbot-wrapper {
   position: fixed;
   top: 0;
