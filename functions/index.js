@@ -19,7 +19,7 @@ exports.askGita = functions.https.onRequest((req, res) => {
       const postData = JSON.stringify({question});
 
       const options = {
-        hostname: "bhagavad-gita-qa-669294246288.us-central1.run.app",
+        hostname: "http://localhost:8000",
         path: "/ask",
         method: "POST",
         headers: {

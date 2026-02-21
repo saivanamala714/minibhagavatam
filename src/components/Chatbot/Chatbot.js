@@ -28,7 +28,7 @@ const Chatbot = ({ onClose }) => {
     setIsLoading(true);
 
     try {
-      const apiUrl = 'https://bhagavad-gita-qa-669294246288.us-central1.run.app/ask';
+      const apiUrl = 'https://bhagavad-gita-api-rbihcaaz5a-uc.a.run.app/ask';
       
       const response = await fetch(apiUrl, {
         method: 'POST',
