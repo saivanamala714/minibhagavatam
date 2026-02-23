@@ -9,6 +9,17 @@ const Chatbot = ({ onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
+  // Generate or retrieve unique user ID
+  const getUserId = () => {
+    let userId = localStorage.getItem('bhagavad_gita_user_id');
+    if (!userId) {
+      // Generate a unique ID using timestamp and random string
+      userId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      localStorage.setItem('bhagavad_gita_user_id', userId);
+    }
+    return userId;
+  };
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -35,7 +46,12 @@ const Chatbot = ({ onClose }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ question: input })
+        body: JSON.stringify({ 
+          question: input,
+          user_id: getUserId(),
+          save_to_history: true,
+          conversation_id: "1IGGr8YUBo8ZxduTRqeX"
+        })
       });
 
       if (!response.ok) throw new Error('Network response was not ok');
