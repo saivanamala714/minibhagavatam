@@ -30,8 +30,8 @@ const CenterPopup = ({ onClose }) => {
           <div className="menu-item">
             <div className="menu-icon">📚</div>
             <div className="menu-details">
-              <div className="menu-label">Cantos</div>
-              <div className="menu-description">Browse all 12 Cantos</div>
+              <div className="menu-label">Chapters</div>
+              <div className="menu-description">Browse all 18 Chapters</div>
             </div>
           </div>
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { DarkModeProvider } from './contexts/DarkModeContext';
 import Header from './components/Header';
-import LeftSidebar from './components/LeftSidebar';
 import MainFeed from './components/MainFeed';
 import BackgroundMusic from './components/BackgroundMusic';
 import KrishnaOverlay from './components/KrishnaOverlay';
@@ -14,7 +13,6 @@ function App() {
       <div className="App">
         <Header />
         <div className="app-body">
-          <LeftSidebar />
           <MainFeed />
         </div>
         <BackgroundMusic />

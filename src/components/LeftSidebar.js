@@ -3,18 +3,18 @@ import './LeftSidebar.css';
 
 const LeftSidebar = () => {
   const menuItems = [
-    { icon: '/images/Canto 1.png', text: 'Canto 1', isProfile: true },
-    { icon: '/images/Canto 2.png', text: 'Canto 2' },
-    { icon: '/images/Canto 3.png', text: 'Canto 3' },
-    { icon: '/images/Canto 4.png', text: 'Canto 4' },
-    { icon: '/images/Canto 5.png', text: 'Canto 5' },
-    { icon: '/images/Canto 6.png', text: 'Canto 6' },
-    { icon: '/images/Canto 7.png', text: 'Canto 7' },
-    { icon: '/images/Canto 8.png', text: 'Canto 8' },
-    { icon: '/images/Canto 9.png', text: 'Canto 9' },
-    { icon: '/images/Canto 10.png', text: 'Canto 10' },
-    { icon: '/images/Canto 11.png', text: 'Canto 11' },
-    { icon: '/images/Canto 12.png', text: 'Canto 12' }
+    { icon: '/images/Canto 1.png', text: 'Chapter 1', isProfile: true },
+    { icon: '/images/Canto 2.png', text: 'Chapter 2' },
+    { icon: '/images/Canto 3.png', text: 'Chapter 3' },
+    { icon: '/images/Canto 4.png', text: 'Chapter 4' },
+    { icon: '/images/Canto 5.png', text: 'Chapter 5' },
+    { icon: '/images/Canto 6.png', text: 'Chapter 6' },
+    { icon: '/images/Canto 7.png', text: 'Chapter 7' },
+    { icon: '/images/Canto 8.png', text: 'Chapter 8' },
+    { icon: '/images/Canto 9.png', text: 'Chapter 9' },
+    { icon: '/images/Canto 10.png', text: 'Chapter 10' },
+    { icon: '/images/Canto 11.png', text: 'Chapter 11' },
+    { icon: '/images/Canto 12.png', text: 'Chapter 12' }
   ];
 
   const shortcuts = [
