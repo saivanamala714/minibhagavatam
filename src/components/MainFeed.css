@@ -1,6 +1,6 @@
 .main-feed {
-  width: calc(100% - 280px); /* Full width minus left sidebar width */
-  margin-left: 280px; /* Start after the left sidebar */
+  width: 100%; /* Full width since sidebar is removed */
+  margin-left: 0; /* No sidebar offset needed */
   padding: 20px;
   min-height: calc(100vh - 56px);
   box-sizing: border-box;
@@ -8,7 +8,7 @@
 
 .posts-container {
   margin-top: 16px;
-  max-width: 800px; /* Limit content width for better readability */
+  max-width: 900px; /* Increased width for better use of space */
   margin-left: auto;
   margin-right: auto;
 }
@@ -16,9 +16,13 @@
 /* Responsive design */
 @media (max-width: 1200px) {
   .main-feed {
-    width: calc(100% - 280px);
-    margin-left: 280px;
+    width: 100%;
+    margin-left: 0;
     padding: 20px 16px;
+  }
+  
+  .posts-container {
+    max-width: 800px;
   }
 }
 
@@ -27,5 +31,9 @@
     width: 100%;
     margin-left: 0;
     padding: 20px 8px;
+  }
+  
+  .posts-container {
+    max-width: 100%;
   }
 }

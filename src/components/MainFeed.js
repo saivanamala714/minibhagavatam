@@ -12,8 +12,8 @@ const MainFeed = () => {
       avatar: '📖',
       time: `${canto.number}h`
     },
-    content: `Canto ${canto.number}: ${canto.title} - ${canto.summary}`,
-    image: `/images/Canto ${canto.number}.png`
+    content: `Chapter ${canto.number}: ${canto.title} - ${canto.summary}`,
+    // image: `/images/Canto ${canto.number}.png`
   }));
 
   return (
