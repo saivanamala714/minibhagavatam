@@ -156,6 +156,42 @@
   border-bottom-left-radius: 4px;
 }
 
+.feedback-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  margin-left: 5px;
+}
+
+.feedback-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feedback-btn:hover {
+  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: scale(1.1);
+}
+
+.feedback-btn.active {
+  opacity: 1;
+  background-color: rgba(74, 111, 165, 0.1);
+}
+
+.feedback-btn:active {
+  transform: scale(0.95);
+}
+
 .chatbot-input {
   display: flex;
   padding: 15px;

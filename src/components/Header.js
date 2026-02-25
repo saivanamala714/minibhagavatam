@@ -2,12 +2,16 @@
 import { useState, useEffect } from 'react';
 import DarkModeToggle from './DarkModeToggle';
 import SlidingPanel from './SlidingPanel';
+import FeedbackStats from './FeedbackStats/FeedbackStats';
+import ConversationsView from './ConversationsView/ConversationsView';
 import './Header.css';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [popupMode, setPopupMode] = useState('events'); // 'events' or 'addEvent'
+  const [showFeedbackStats, setShowFeedbackStats] = useState(false);
+  const [showConversations, setShowConversations] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,6 +46,14 @@ const Header = () => {
         </div>
         <div className="header-right">
           <DarkModeToggle />
+          <button className="popup-button" onClick={() => setShowConversations(true)}>
+            <span className="button-icon">💬</span>
+            <span className="button-text">Chats</span>
+          </button>
+          <button className="popup-button" onClick={() => setShowFeedbackStats(true)}>
+            <span className="button-icon">📊</span>
+            <span className="button-text">Stats</span>
+          </button>
           <button className="popup-button" onClick={togglePopup}>
             <span className="button-icon">📋</span>
             <span className="button-text">Menu</span>
@@ -56,6 +68,12 @@ const Header = () => {
           onBackToEvents={backToEvents}
           title={popupMode === 'events' ? 'Upcoming Events' : 'Add New Event'}
         />
+      )}
+      {showFeedbackStats && (
+        <FeedbackStats onClose={() => setShowFeedbackStats(false)} />
+      )}
+      {showConversations && (
+        <ConversationsView onClose={() => setShowConversations(false)} />
       )}
     </>
   );
