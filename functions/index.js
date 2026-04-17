@@ -42,6 +42,16 @@ exports.askGita = functions.https.onRequest((req, res) => {
         apiRes.on("end", () => {
           try {
             const data = JSON.parse(responseBody);
+            
+            // Validate the new response structure
+            if (!data.answer) {
+              console.error("Invalid response structure: missing 'answer' field");
+              return res.status(500).json({error: "Invalid API response structure"});
+            }
+            
+            // Log response metadata for debugging
+            console.log(`Response received from ${data.agent_name || 'unknown agent'}, model: ${data.model || 'unknown'}, response_time: ${data.response_time || 'unknown'}s`);
+            
             res.status(200).json(data);
           } catch (e) {
             console.error("Failed to parse response", e);
