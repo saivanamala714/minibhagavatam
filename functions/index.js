@@ -20,7 +20,7 @@ exports.askGita = functions.https.onRequest((req, res) => {
 
       const options = {
         hostname: "http://localhost:8000",
-        path: "/ask",
+        path: "/ask-agent",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
